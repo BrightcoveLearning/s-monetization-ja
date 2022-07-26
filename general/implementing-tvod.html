@@ -1,0 +1,346 @@
+<h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+  <section class="bcls-section">
+    <h2 id="Introduction">Introduction</h2>
+    <p>Transactional Video On Demand (TVOD) is a monetization package where viewers can pay a one-time fee to either purchase or rent an OTT asset. A TVOD package can be associated with one asset or a bundle of assets, like a series or season. The viewer can be alloted a certain amount of time to view the asset, or it can be unlimited. </p>
+    <p>Unlike SVOD where viewers pay a subscription to access video content, TVOD viewers pay a fee for each piece of content they want to view.</p>
+    <p>TVOD packages give the viewers the following options for watching content:</p>
+    <ul>
+      <li>Rent</li>
+      <li>Buy</li>
+    </ul>
+    <!-- <p>See the <a href="/monetization/monetization-options.html">Understanding Monetization Options</a> document for more information on AuthVOD, as well as all monetization packages you can use with Brightcove Beacon.</p> -->
+  </section>
+
+  <!-- <section class="bcls-section">
+    <h2 id="section-name">Configuring an AuthVOD package overview</h2>
+    <p>Here are the high-level steps in configuring an AuthVOD package:</p>
+    <ol>
+      <li>In Brightcove Beacon, create an <strong>unpublished</strong>, cost free package.</li>
+      <li>If ads are desired, supply an ad provider when creating the package.</li>
+      <li>In Video Cloud Studio, add data to videos' custom fields to assign them to the AuthVOD package.</li>
+      <li>In Brightcove Beacon, ingest the videos and clear the cache.</li>
+    </ol>
+  </section> -->
+
+  <section class="bcls-section">
+    <h2 id="Creating_a_TVOD_package">Creating a TVOD package</h2>
+    <p>To create a TVOD package in Brightcove Beacon, follow these steps:</p>
+    <ol class="bcls-tasklist">
+      <li>
+        <p>Login to Brightcove Beacon.</p>
+        <ol>
+          <li>In the top navigation, select <strong>Commerce</strong></li>
+          <li>In the left navigation, select <strong>TVOD Plans</strong></li>
+          <li>click <strong>Add New TVOD Plan</strong></li>
+        </ol>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/commerce.png" alt="Commerce top navigation">
+        </figure>
+      </li>
+      <li>
+        <p>For the <strong>Package</strong> tab, enter details for your TVOD Plan.</p>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/package-tab-rent.png" alt="Package tab">
+        </figure> 
+        <p>
+          This table contains the fields you will find in the <strong>Package</strong> tab: </p>
+        <table class="bcls-table">
+          <thead class="bcls-table__head">
+            <tr>
+              <th>Field</th>
+              <th>Required</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody class="bcls-table__body">
+            <tr>
+              <td><strong>Name</strong></td>
+              <td>Yes</td>
+              <td>Name of the TVOD package</td>
+            </tr>
+            <tr>
+              <td><strong>TVOD Plan Type</strong></td>
+              <td>Yes</td>
+              <td>
+                Select one:
+                <ul>
+                  <li><strong>Multiple Assets</strong> - Associate a bundle of assets with this plan; for example, viewers can purchase/rent a full series or season</li>
+                  <li><strong>Individual Assets</strong> - Viewers can buy or rent 1 asset</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Purchase Type</strong></td>
+              <td>Yes</td>
+              <td>
+                Select one:
+                <ul>
+                  <li><strong>Buy</strong> - Allow viewers to purchase an asset or bundle of assets</li>
+                  <li><strong>Rent</strong> - Allow viewers to rent an asset or bundle of assets for a period of time</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Rent period</strong></td>
+              <td>No</td>
+              <td>
+                Number of days an asset is available for viewing once it has been rented. This field appears when the <strong>Purchase Type</strong> is set to <strong>Rent</strong>.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Status</strong></td>
+              <td>Yes</td>
+              <td>
+                  Select one of the following types:
+                  <ul>
+                      <li>
+                          Published
+                      </li>
+                      <li>
+                          Unpublished
+                      </li>
+                  </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Allow Downloads</strong></td>
+              <td>Yes</td>
+              <td>
+                  Set to <strong>Yes</strong> to allow this series to be downloaded by the user for offline playback. For details, see the <a href="https://beacon-help.support.brightcove.com/media/offline-playback-beacon.html">Offline Playback with Brightcove Beacon Apps</a> document.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Payment methods to use</strong></td>
+              <td>Yes</td>
+              <td>
+                Select one of the following types:
+                  <ul>
+                      <li>
+                          Stripe
+                      </li>
+                      <li>
+                          Beacon Store
+                      </li>
+                  </ul> 
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <p>If you are using Stripe, select <strong>Stripe</strong> to see <strong>Payment methods details</strong>.</p>
+        <aside class="bcls-aside bcls-aside--tip">Availability is for the TVOD package. For example, if the <strong>Permitted locations</strong> is set for the US, then all viewers will be able play a movie or asset associated with this package, but only viewers in the US can buy/rent the asset.</aside>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/stripe-details.png" alt="Stripe payment details">
+        </figure> 
+        <p>
+          This table contains the fields Stripe payment details: </p>
+        <table class="bcls-table">
+          <thead class="bcls-table__head">
+            <tr>
+              <th>Field</th>
+              <th>Required</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody class="bcls-table__body">
+            <tr>
+              <td><strong>Start Time</strong></td>
+              <td>Yes</td>
+              <td>Schedule a starting date this package will be available</td>
+            </tr>
+            <tr>
+                <td><strong>End Time</strong></td>
+                <td>Yes</td>
+                <td>
+                    Schedule an ending date when this package will no longer be available
+                </td>
+            </tr>
+            <tr>
+              <td><strong>Devices to publish</strong></td>
+              <td>Yes</td>
+              <td>
+                  Add the devices you wish to publish to. Select the <strong>Select / Unselect All Devices</strong> to see a list of available devices.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Permitted locations</strong></td>
+              <td>Yes</td>
+              <td>
+                <p>Select the locations where you want to stream your content, if no restrictions enter <strong>World</strong>.</p>
+                <aside class="bcls-aside bcls-aside--information">
+                    <p>If you don't specify at least 1 permitted location, then you may see this message from your app:</p>
+                    <figure class="bcls-figure">
+                        <img class="bcls-image" src="/assets/images/s-general-img/series-seasons-episodes/no-content.jpg" alt="No content" /> </figure>
+                </aside>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Denied locations</strong></td>
+              <td>No</td>
+              <td>
+                  Select the locations where you DO NOT want to stream your content. Enter <strong>World</strong> if you have no restrictions.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Price</strong></td>
+              <td>Yes</td>
+              <td>
+                  Specify the price that users must pay to view content associated with this package.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Currency</strong></td>
+              <td>Yes</td>
+              <td>
+                  Specify the currency type for the package price.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Product Description</strong></td>
+              <td>Yes</td>
+              <td>
+                Product Description is sent to Stripe so that you can identify the package.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <p>If you are using the Beacon store, select <strong>Beacon Store</strong> to see <strong>Payment methods details</strong>.</p>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/beacon-store-details.png" alt="Beacon Store payment details">
+        </figure> 
+        <p>
+          This table contains the fields Beacon Store payment details: </p>
+        <table class="bcls-table">
+          <thead class="bcls-table__head">
+            <tr>
+              <th>Field</th>
+              <th>Required</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody class="bcls-table__body">
+            <tr>
+              <td><strong>Beacon Store ID</strong></td>
+              <td>Yes</td>
+              <td>TVOD with the Beacon Store requires setup of the SKU. The <strong>Beacon Store ID</strong> is the <strong>package_name</strong> sent to the Beacon Store using the API.</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <p>For the <strong>Textual Data</strong> tab, enter details for your plan.</p>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/textual-data.png" alt="Textual Data tab">
+        </figure> 
+        <p>
+          This table contains the fields you will find in the <strong>Textual Data</strong> tab: </p>
+        <table class="bcls-table">
+          <thead class="bcls-table__head">
+            <tr>
+              <th>Field</th>
+              <th>Required</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody class="bcls-table__body">
+            <tr>
+              <td><strong>Pack Name</strong></td>
+              <td>Yes</td>
+              <td>Display name shown to viewers</td>
+            </tr>
+            <tr>
+              <td><strong>Headline</strong></td>
+              <td>Yes</td>
+              <td>Description shown to viewers, for example <em>Holiday Special!</em></td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <p>For the <strong>Non-Textual Data</strong> tab, enter details for your plan.</p>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/non-textual-data.png" alt="Non-Textual Data tab">
+        </figure> 
+        <p>
+          This table contains the fields you will find in the <strong>Non-Textual Data</strong> tab: </p>
+        <table class="bcls-table">
+          <thead class="bcls-table__head">
+            <tr>
+              <th>Field</th>
+              <th>Required</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody class="bcls-table__body">
+            <tr>
+              <td><strong>Package Image</strong></td>
+              <td>No</td>
+              <td>Supply an image for use next to the package name</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>Click <strong>Create Package</strong>.</li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Assigning_TVOD_packages_to_content">Assigning TVOD packages to content</h2>
+    <p>To add content to TVOD packages, edit each asset and associate it with applicable packages. The following content types can be used with TVOD packages:</p>
+    <ul>
+      <li>Movies</li>
+      <li>Series, Seasons, and Episodes</li>
+      <li>Channels and Live Events</li>
+      <!-- <li>Playlists and Pages</li> -->
+      <!-- <li>Programs</li> -->
+    </ul>
+    <p>These steps walk through adding a TVOD package to a movie, but the process is similar for other asset types.</p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>Return to Brightcove Beacon. In the top navigation, select <strong>Movies</strong>. Click the <strong>Name</strong> link for your movie.</p>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/movie-home.png" alt="Movies list">
+        </figure>
+      </li>
+      <li>
+        <p>Click the <strong>Rights & Scheduling</strong> tab.</p>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/movie-rights.png" alt="Rights & Scheduling tab">
+        </figure>
+      </li>
+      <li>
+        <p>In the <strong>Availability Details</strong> section, click <strong>Rights Type</strong> and select <strong>Buy/Rent - TVOD</strong>.</p>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/buy-rent-tvod.png" alt="Rights Type">
+        </figure>
+      </li>
+      <li>
+        <p>Click in the <strong>Select Package</strong> input area and select one or more TVOD packages that you want associated with this movie.</p>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/select-pkg.png" alt="Select Package">
+        </figure>
+      </li>
+      <li>Click <strong>Update Movie</strong>.</li>
+      <li>
+        <p>Once you associate TVOD packages with content, then you will see that content listed in the package details.</p>
+        <p>Return to your TVOD plan.</p>
+        <ol>
+          <li>In the top navigation, select <strong>Commerce</strong></li>
+          <li>In the left navigation, select <strong>TVOD Plans</strong></li>
+          <li>click <strong>Content</strong> tab</li>
+        </ol>
+        <p>Here, you will see content associated with this plan.</p>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/tvod-content.png" alt="TVOD Content tab">
+        </figure>
+      </li>
+    </ol>
+  </section>
+
+</article>
