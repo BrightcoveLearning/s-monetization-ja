@@ -1,143 +1,110 @@
-<h1>{{ page.title }}</h1>
-<article class="bcls-article">
-  <summary>{{ page.description }}</summary>
-  <section class="bcls-section">
+<h1>{{page.title}}</h1> <article class="bcls-article"> <summary>{{page.description}}</summary> <section class="bcls-section">
     <p>
-      Ad configurations define various aspects of ad playback, including ad calls, timing, beacons and other ad configuration options. The Server-Side Ad Settings define the ads that can be requested during video on demand (VOD) videos and during live events. Server-side ads take advantage of Brightcove's Server-Side Ad Insertion (SSAI) technology and provide these main features:</p>
+      広告設定は、広告呼び出し、タイミング、ビーコン、その他の広告設定オプションなど、広告の再生に関するさまざまな側面を定義します。サーバー側広告設定では、動画オンデマンド（VOD）動画やライブイベント中にリクエストできる広告を定義します。サーバーサイド広告は、ブライトコーブのサーバーサイド広告挿入（SSAI）テクノロジーを活用し、次の主な機能を提供します。</p>
     <ul>
       <li>
-        Since ads are stitched into the on-demand or live video stream on the server side, they are not affected by ad blockers </li>
+        広告はサーバー側のオンデマンド動画ストリームまたはライブ動画ストリームに縫い付けられるため、広告ブロッカーの影響を受けません </li>
       <li>
-        For live events, ads are inserted at cue points sent from your encoder or you can create an instant cue point using the <a href="https://live.support.brightcove.com/live-module/creating-and-managing-live-events-using-live-module.html#ad">Live module Control Room</a>
+        ライブ イベントの場合、エンコーダから送信されたキュー ポイントに広告が挿入されるか、<a href="https://live.support.brightcove.com/live-module/creating-and-managing-live-events-using-live-module.html#ad">ライブモジュールコントロールルーム</a>
       </li>
-      <li>You can configure fill slates to fill any unused ad time</li>
+      <li>未使用の広告時間を埋めるように塗りつぶしスレートを構成できます</li>
     </ul>
     <p>
-      To learn more about server-side advertising, see <a href="https://player.support.brightcove.com/plugins/implementing-server-side-ads-brightcove-player.html">Implementing Server-Side Ads with the Brightcove Player</a>.
-    </p>
-    <aside class="bcls-aside bcls-aside--information"> Note:
+      サーバー側広告の詳細については、次を参照してください。<a href="https://player.support.brightcove.com/plugins/implementing-server-side-ads-brightcove-player.html"> Brightcove Player を使用したサーバーサイド広告の実装</a>.
+    </p> <aside class="bcls-aside bcls-aside--information"> 注:
       <ul>
         <li>
-          Before you can use SSAI, your Video Cloud account needs to be configured for Dynamic Delivery and enabled for SSAI. Contact your account manager for details.
+          SSAI を使用するには、Video Cloud アカウントをダイナミック配信に設定し、SSAI を有効にする必要があります。詳細はアカウントマネージャーにお問い合わせください。
         </li>
-        <li>VMAP for Brightcove Live SSAI is not currently supported.</li>
-        <li>Although there is no prefetch functionality for SSAI ads, we delegate the ad position logic to the ad provider. Dynamic Delivery makes all the add calls up front. If we get an ad from the ad provider and it is transcoded in our system we will insert it into the stream.</li>
-      </ul>
-    </aside>
+        <li>ブライトコーブ Live SSAI の VMAP は現在サポートされていません。</li>
+        <li>SSAI 広告にはプリフェッチ機能はありませんが、広告ポジションロジックは広告プロバイダーに委任されます。動的配信では、すべての追加コールが前もってきます。広告プロバイダから広告を取得し、それが私たちのシステムでトランスコードされている場合は、ストリームに挿入します。</li>
+      </ul> </aside>
     <p>
-      The Server-Side Ad Settings page is used to manage the Live and VOD ad configurations. Note that to access the Server-Side Ad Settings page, you must be a user with the Administrator role.
+      [サーバー側広告設定] ページは、ライブ広告と VOD 広告の設定を管理するために使用します。[サーバー側広告設定] ページにアクセスするには、管理者ロールを持つユーザーである必要があります。
     </p>
-    <p>To access the Server-Side Ad Settings page:</p>
+    <p>[サーバーサイド広告設定] ページにアクセスするには:</p>
     <ol class="bcls-tasklist-restart">
-      <li>Log in to Studio.</li>
+      <li>Studioにログインします。</li>
       <li>
-        From the primary navigation, click <strong>ADMIN</strong> and then<strong> Server-Side Ad Settings</strong>.A list of all ad configurations will be displayed.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/admin/node18748-list-of-ad-configs.png" />
-        </figure>
+        プライマリ ナビゲーションから、<strong>管理者</strong>その後<strong>サーバー側の広告設定</strong>.すべての広告構成のリストが表示されます。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/admin/node18748-list-of-ad-configs.png" /> </figure>
       </li>
     </ol>
     <p>
-      To create a new ad configuration, click
-      <strong>Create Ad Configuration</strong> and then click the specific type of ad to create:
+      新しい広告構成を作成するには、<strong>広告構成の作成</strong>次に、特定のタイプの広告をクリックして作成します。
     </p>
     <ul>
-      <li><a href="#vod">Video on Demand (VOD)</a></li>
-      <li><a href="#live">Live</a></li>
-    </ul>
-    <figure class="bcls-figure">
-      <img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/admin/node18748-create-ad.png" />
-    </figure>
-  </section>
-  <section class="bcls-section">
-    <h2 id="vod">Creating a Video On Demand ad configuration</h2>
-    <aside class="bcls-aside bcls-aside--information"> Note: Server-side ad configurations can also be managed using the Server-Side Ad Insertion API. For information, see the <a href="https://ssai.support.brightcove.com/vod/guides/video-cloud-ssai-ad-config-api.html">Video Cloud SSAI Ad Config API</a>
-      topic.
-    </aside>
-    <p>To add a Video On Demand (VOD) ad configuration, follow these steps.</p>
+      <li><a href="#vod">ビデオオンデマンド (VOD) </a></li>
+      <li><a href="#live">ライブ</a></li>
+    </ul>     <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/admin/node18748-create-ad.png" /></figure></section><section class="bcls-section">
+    <h2 id="vod">動画オンデマンド広告の設定を作成する</h2> <aside class="bcls-aside bcls-aside--information"> 注:サーバーサイド広告の設定は、サーバーサイド広告挿入 API を使用して管理することもできます。詳細については、<a href="https://ssai.support.brightcove.com/vod/guides/video-cloud-ssai-ad-config-api.html"> Video Cloud SSAI 広告構成 API</a>トピック。 </aside>
+    <p>動画オンデマンド（VOD）広告の設定を追加するには、次の手順に従います。</p>
     <ol class="bcls-tasklist-restart">
       <li>
-        On the Server-Side Ad Settings page, click <strong>Create Ad Configuration &gt; VOD</strong>.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/admin/node18748-create-vod-ad.png" />
-        </figure>
+        サーバーサイド広告設定ページで、<strong>広告構成の作成 &gt; VOD</strong> . <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/admin/node18748-create-vod-ad.png" /> </figure>
       </li>
-      <li>Enter a <strong>Name</strong>.</li>
+      <li>入力します<strong>名前</strong>.</li>
       <li>
-        Select the <strong>Ad Server Response</strong>: <ul>
-          <li>DFP Ad Rules</li>
+        を選択<strong>広告サーバーの応答</strong>: <ul>
+          <li>DFP 広告ルール</li>
           <li>DFP VMAP</li>
-          <li>Smart XML</li>
-          <li>VAST 3.0</li>
+          <li>スマートXML</li>
+          <li>広大3.0</li>
         </ul>
       </li>
-      <li>Enter the<strong> Ad Tag</strong>.</li>
+      <li>入力します<strong>広告タグ</strong>.</li>
       <li>
-        Check <strong>Disable server-side beacons</strong> to disable server-side beacons. When disabled, SSAI will not fire any beacons server-side and will include all beacons in the VMAP output.
+        小切手<strong>サーバー側のビーコンを無効にする</strong>サーバー側のビーコンを無効にします。無効にすると、SSAI はビーコンをサーバー側で起動せず、すべてのビーコンを VMAP 出力に含めます。
       </li>
-      <li>Click <strong>Save</strong>.</li>
+      <li>クリック<strong>保存</strong>.</li>
     </ol>
     <p>
-      To edit an ad configuration, click the ad name, make the changes and then click <strong>Save</strong>. To delete an ad config, check the box next to the ad and then click <strong>Delete</strong>. To duplicate an ad config, check the box next to the ad and then click <strong>Duplicate</strong>.
+      広告設定を編集するには、広告名をクリックし、変更を加えてから<strong>保存</strong>.広告構成を削除するには、広告の横にあるチェックボックスをオンにして、<strong>消去</strong>.広告設定を複製するには、広告の横にあるチェックボックスをオンにしてから<strong>複製</strong>.
     </p>
     <p>
-      Once VOD ad configurations have been created, open the Players module and click on a player to view the properties. When the <strong>Enable Server-Side (SSAI)</strong> advertising property is enabled, an ad configuration can be selected. For information on configuring player advertising, see
-      <a href="https://studio.support.brightcove.com/players/configuring-player-advertising-using-players-module.html">Configuring Player Advertising using the Players Module (external link)</a>.
-    </p>
-  </section>
-  <section class="bcls-section">
-    <h2 id="live">Creating a Live ad configuration</h2>
-    <aside class="bcls-aside bcls-aside--information"> Note: Server-side Live ad configurations can also be managed using the Live API. For information, see
-      <a href="https://live.support.brightcove.com/live-api/ssai/live-api-server-side-ad-insertion-ssai.html#Create_an_ad_configuration">Brightcove Live API: Server-Side Ad Insertion (SSAI)</a>.
-    </aside>
-    <p>To add a Live ad configuration, follow these steps.</p>
+      VOD 広告設定を作成したら、Players モジュールを開き、プレーヤーをクリックしてプロパティを表示します。とき<strong>サーバー側 (SSAI) を有効にする</strong>広告プロパティが有効になっている場合、広告構成を選択できます。プレーヤーの広告の構成については、次を参照してください。<a href="https://studio.support.brightcove.com/players/configuring-player-advertising-using-players-module.html">プレーヤー モジュールを使用したプレーヤー広告の構成 (外部リンク)</a> .
+    </p>  </section><section class="bcls-section">
+    <h2 id="live">ライブ広告の設定を作成する</h2> <aside class="bcls-aside bcls-aside--information"> 注:サーバー側のライブ広告の設定は、ライブ API を使用して管理することもできます。詳細については、を参照してください。<a href="https://live.support.brightcove.com/live-api/ssai/live-api-server-side-ad-insertion-ssai.html#Create_an_ad_configuration">ブライトコーブ ライブ API:サーバーサイド広告挿入 (SSAI)</a> . </aside>
+    <p>ライブ広告の設定を追加するには、次の手順に従います。</p>
     <ol class="bcls-tasklist-restart">
       <li>
-        On the Server-Side Ad Settings page, click <strong>Create Ad Configuration &gt; Live</strong>.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/admin/node18748-create-live-ad.png" />
-        </figure>
+        サーバーサイド広告設定ページで、<strong>広告構成の作成 &gt; ライブ</strong>. <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/admin/node18748-create-live-ad.png" /> </figure>
       </li>
-      <li>Enter a <strong>Name</strong>.</li>
+      <li>入力します<strong>名前</strong>.</li>
       <li>
-        Select the <strong>Ad Server Response</strong>: <ul>
-          <li>VAST</li>
-          <li>DFP (Ad Rules)</li>
-          <li>Smart XML</li>
+        を選択<strong>広告サーバーの応答</strong>: <ul>
+          <li>広大</li>
+          <li>DFP (広告ルール)</li>
+          <li>スマートXML</li>
         </ul>
       </li>
-      <li>Enter the<strong> Ad Tag</strong>.</li>
-      <li>Click <strong>Save</strong>.</li>
+      <li>入力します<strong>広告タグ</strong>.</li>
+      <li>クリック<strong>保存</strong>.</li>
     </ol>
     <p>
-      To edit an ad configuration, click the ad name, make the changes and then click <strong>Save</strong>. To delete an ad config, check the box next to the ad and then click <strong>Delete</strong>. To duplicate an ad config, check the box next to the ad and then click <strong>Duplicate</strong>.
+      広告設定を編集するには、広告名をクリックし、変更を加えてから<strong>保存</strong>.広告構成を削除するには、広告の横にあるチェックボックスをオンにして、<strong>消去</strong>.広告設定を複製するには、広告の横にあるチェックボックスをオンにしてから<strong>複製</strong>.
     </p>
     <p>
-      Once Live ad configurations have been created, when an event is created with the <strong>Enable Server-Side Ad Insertion (SSAI)</strong> property enabled, an ad configuration can be selected in the Control Room. For information on creating live events, see <a href="https://live.support.brightcove.com/live-module/creating-and-managing-live-events-using-live-module.html">Creating and Managing Live Events using the Live Module</a>.
+      ライブ広告設定が作成されたら、イベントが<strong>サーバー側の広告挿入 (SSAI) を有効にする</strong>プロパティが有効になっている場合、コントロール ルームで広告構成を選択できます。ライブ イベントの作成については、 を参照してください。<a href="https://live.support.brightcove.com/live-module/creating-and-managing-live-events-using-live-module.html"> Live モジュールを使用したライブ イベントの作成と管理</a>.
     </p>
 
-    <h3>Player Enhancements for Live SSAI</h3>
-    <p>Brightcove's Player Enhancements for Live SSAI allows you to add client-side components to live streams, including ad counts, ad countdown timers, click through ads and companion ads. For details, see the <a href="https://apis.support.brightcove.com/live-api/ssai/overview-player-enhancements-live-ssai.html">Overview: Player Enhancements for Live SSAI</a> document.</p>
-    <p>To use this feature, contact your account manager to enable your account for:</p>
+    <h3>ライブ SSAI のプレーヤーの機能強化</h3>
+    <p>BrightcoveのLiveSSAI用のPlayerEnhancementsでは、広告カウントダウン、広告カウントダウンタイマー、クリックスルー広告、コンパニオン広告など、クライアント側のコンポーネントをライブストリームに追加できます。詳細については、<a href="https://apis.support.brightcove.com/live-api/ssai/overview-player-enhancements-live-ssai.html">概要：ライブ SSAI のプレーヤーの機能強化</a>資料。</p>
+    <p>この機能を使用するには、アカウントマネージャに連絡してアカウントを有効にします。</p>
     <ul>
-      <li> Live streams</li>
-      <li>Server-Side Ad Insertion (SSAI)</li>
-      <li>Player Enhancements for Live SSAI</li>
+      <li> ライブストリーム</li>
+      <li>サーバー側広告挿入 (SSAI) </li>
+      <li>ライブ SSAI のプレーヤーの機能強化</li>
     </ul>
 
 
 
-    <p>To add player enhancements, follow these steps:</p>
+    <p>プレーヤー拡張機能を追加するには、次の手順を実行します。</p>
     <ol class="bcls-tasklist-restart">
-      <li>On the Server-Side Ad Settings page, click <strong>Create Ad Configuration &gt; Live</strong>.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="Create Live ad configuration" src="https://general.support.brightcove.com/assets/images/admin/node18748-create-live-ad.png" /></figure>
+      <li>サーバーサイド広告設定ページで、<strong>広告構成の作成 &gt; ライブ</strong>. <figure class="bcls-figure"><img class="bcls-image--no-border" alt="ライブ広告設定の作成" src="https://general.support.brightcove.com/assets/images/admin/node18748-create-live-ad.png" /></figure>
       </li>
-      <li>Enter the data as described in the <a href="#live">add a Live ad configuration</a> steps above.</li>
-      <li>Select <strong>Client Options Enabled</strong> to see a list of feature options.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="Client Options Enabled" src="https://general.support.brightcove.com/assets/images/admin/node18748-client-options-enabled.png" /></figure>
+      <li>の説明に従ってデータを入力します。<a href="#live">ライブ広告構成を追加する</a>上記の手順。</li>
+      <li>選択する<strong>クライアント オプションが有効</strong>機能オプションのリストを表示します。 <figure class="bcls-figure"><img class="bcls-image--no-border" alt="クライアントオプションの有効化" src="https://general.support.brightcove.com/assets/images/admin/node18748-client-options-enabled.png" /></figure>
       </li>
-      <li>Select the client-side components that you want to add to your live stream.</li>
-      <li>Click <strong>Save</strong>.</li>
-    </ol>
-  </section>
-</article>
+      <li>ライブストリームに追加するクライアント側のコンポーネントを選択します。</li>
+      <li>クリック<strong>保存</strong>.</li>
+    </ol>  </section></article>

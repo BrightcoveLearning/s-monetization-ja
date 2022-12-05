@@ -1,232 +1,151 @@
-<h1>{{ page.title }}</h1>
-<article class="bcls-article">
-  <summary>{{ page.description }}</summary>
-
-  <section class="bcls-section">
-    <h2 id="overview">Overview</h2>
+<h1>{{page.title}}</h1> <article class="bcls-article"> <summary>{{page.description}}</summary> <section class="bcls-section">
+    <h2 id="overview">概要</h2>
 
     <p>
-      Brightcove Beacon supports Server-Side Ad Insertion (SSAI) in Live events so server-side ads can be requested and displayed during a Live stream. Note: if you are using redundancy with SSAI, you must insert ads into all jobs in the group at the same time.
+      Brightcove Beacon では、ライブイベントでのサーバーサイド広告挿入 (SSAI) がサポートされているため、ライブストリーム中にサーバーサイド広告をリクエストして表示できます。注：SSAIで冗長性を使用している場合は、グループ内のすべてのジョブに同時に広告を挿入する必要があります。
     </p>
-    <p>A high-level view of the process is:</p>
+    <p>プロセスの概要は次のとおりです。</p>
     <ol class="bcls-tasklist">
-      <li>Create an Ad Configuration in Studio.</li>
-      <li>Create a fill slate for your Live event.</li>
-      <li>Create a Live event with SSAI enabled.</li>
-      <li>Publish the Live event to Brightcove Beacon.</li>
-    </ol>
-    <aside class="bcls-aside bcls-aside--information">
-      This document is complementary to the
-      <a href="https://beacon.support.brightcove.com/using-brightcove-beacon/streaming-live-event.html" target="_blank">Streaming a Live Event</a> documentation to guide you into add SSAI to your live events. For detailed information on how to create an event, please see the section on <a href="https://beacon.support.brightcove.com/using-brightcove-beacon/streaming-live-event.html#create" target="_blank">Creating a live event in Brightcove Beacon</a>.
-    </aside>
+      <li>Studioで広告設定を作成します。</li>
+      <li>ライブイベント用の塗りつぶしスレートを作成します。</li>
+      <li>SSAI を有効にしてライブイベントを作成します。</li>
+      <li>ライブイベントを Brightcove Beacon に公開します。</li>
+    </ol> <aside class="bcls-aside bcls-aside--information"> このドキュメントは、<a href="https://beacon.support.brightcove.com/using-brightcove-beacon/streaming-live-event.html" target="_blank">ライブ イベントのストリーミング</a>ライブ イベントに SSAI を追加するためのガイドとなるドキュメント。イベントの作成方法の詳細については、次のセクションを参照してください。<a href="https://beacon.support.brightcove.com/using-brightcove-beacon/streaming-live-event.html#create" target="_blank">ブライトコーブ ビーコンでライブ イベントを作成する</a>. </aside>
 
-    <p>SSAI provides these main features during Live events:</p>
+    <p>SSAI は、ライブイベント中に次の主な機能を提供します。</p>
     <ul>
       <li>
-        Since ads are stitched into the Live video stream on the server-side, they are not affected by ad blockers.
+        広告はサーバー側のライブ動画ストリームに縫い付けられるため、広告ブロッカーの影響を受けません。
       </li>
       <li>
-        Ads are inserted at cue points sent from your encoder or you can create an instant cue point using the Live module Control Room.
+        広告は、エンコーダから送信されたキューポイントに挿入されます。または、ライブモジュールコントロールルームを使用してインスタントキューポイントを作成できます。
       </li>
       <li>
-        You can configure
-        <a href="https://live.support.brightcove.com/live-module/implementing-server-side-ads-live-module.html#fill_slate" target="_blank">fill slates</a> to fill any unused ad time.
+        設定できます<a href="https://live.support.brightcove.com/live-module/implementing-server-side-ads-live-module.html#fill_slate" target="_blank">スレートを埋める</a>未使用の広告時間を埋めます。
       </li>
-    </ul>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Configuring_Server-Side_Ad_Settings">Configuring Server-Side Ad Settings</h2>
+    </ul>  </section><section class="bcls-section">
+    <h2 id="Configuring_Server-Side_Ad_Settings">サーバーサイド広告設定の構成</h2>
     <p>
-      Here you will create an SSAI Ad Configuration to be used as your set of ads that will be displayed in your Brightcove Beacon Live event.
+      ここでは、Brightcove ビーコンライブイベントに表示される広告セットとして使用する SSAI 広告設定を作成します。
     </p>
     <ol class="bcls-tasklist-restart">
-      <li>Log in to Studio.</li>
+      <li>Studioにログインします。</li>
       <li>
-        In the navigation header, click <strong>ADMIN</strong> and select <strong>Server-Side Ad Settings</strong>. A list of all ad configurations will be displayed.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/1-studio-ssai-settings.png" />
-        </figure>
+        ナビゲーション ヘッダーで、<strong>管理者</strong>そして選択<strong>サーバー側の広告設定</strong>.すべての広告設定のリストが表示されます。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/1-studio-ssai-settings.png" /> </figure>
       </li>
       <li>
-        To create a new ad configuration, click the
-        <strong>Create Ad Configuration</strong> button.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/2-create-ad-configuration.png" />
-        </figure>
-        <aside class="bcls-aside bcls-aside--information">
-          Server-side Live ad configurations can also be managed using the Live API. For information, see
-          <a href="https://live.support.brightcove.com/live-api/ssai/live-api-server-side-ad-insertion-ssai.html#Create_an_ad_configuration" target="_blank">Brightcove Live API: Server-Side Ad Insertion (SSAI)</a>.
-        </aside>
+        新しい広告構成を作成するには、<strong>広告構成の作成</strong>ボタン。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/2-create-ad-configuration.png" /> </figure> <aside class="bcls-aside bcls-aside--information"> サーバー側のライブ広告の設定は、ライブ API を使用して管理することもできます。詳細については、を参照してください。<a href="https://live.support.brightcove.com/live-api/ssai/live-api-server-side-ad-insertion-ssai.html#Create_an_ad_configuration" target="_blank">ブライトコーブ ライブ API:サーバーサイド広告挿入 (SSAI)</a> . </aside>
       </li>
       <li>
-        From the dropdown, select <strong>Live</strong> as a type.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/3-ad-config-live.png" />
-        </figure>
+        ドロップダウンから、選択します<strong>ライブ</strong>タイプとして。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/3-ad-config-live.png" /> </figure>
       </li>
       <li>
-        Check to be sure you are seeing the
-        <strong>Server-Side Ad Settings</strong> form.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/4-ad-config-form.png" />
-        </figure>
+        が表示されていることを確認してください<strong>サーバー側の広告設定</strong>形。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/4-ad-config-form.png" /> </figure>
       </li>
-      <li>Give your ad configuration a <strong>Name</strong>.</li>
+      <li>広告構成を与える<strong>名前</strong>.</li>
       <li>
-        Select the <strong>Ad Server Response</strong>:
+        を選択<strong>広告サーバーの応答</strong>:
         <ul>
-          <li><strong>VAST</strong></li>
-          <li><strong>DFP (Ad Rules)</strong></li>
-          <li><strong>Smart XML</strong></li>
-        </ul>
-        <aside class="bcls-aside bcls-aside--information">
-          Please check with your ad operations manager for the correct value to select.
-        </aside>
+          <li><strong>広大</strong></li>
+          <li><strong>DFP (広告ルール)</strong></li>
+          <li><strong>スマートXML</strong></li>
+        </ul> <aside class="bcls-aside bcls-aside--information"> 選択する正しい値については、広告オペレーションマネージャーにお問い合わせください。 </aside>
       </li>
-      <li>Enter the <strong>Ad Tag (server URL)</strong>.</li>
-      <li>Click the <strong>Save</strong> button.</li>
+      <li>入力します<strong>広告タグ (サーバー URL)</strong> .</li>
+      <li>クリック<strong>保存</strong>ボタン。</li>
       <li id="Ad_Configuration_ID">
-        Copy the value of your Ad Configuration ID. You will use this in a <a href="#Live_Ad_Config_ID">later step</a>.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="Ad configuration ID" src="/assets/images/s-monetization-img/live-ssai/ad-config-id.png" />
-        </figure>
+        広告設定IDの値をコピーします。これを<a href="#Live_Ad_Config_ID">後のステップ</a>. <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="広告設定ID" src="/assets/images/s-monetization-img/live-ssai/ad-config-id.png" /> </figure>
       </li>
-    </ol>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Configuring_a_Fill_Slate">Configuring a Fill Slate</h2>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="Configuring_a_Fill_Slate">フィルスレートの設定</h2>
     <p>
-      Fill slates are videos that will be displayed when there are gaps in a Live stream ad break that cannot be filled with a dynamically-served ad. If the requested ad is shorter than the Ad break time, the fill slate will be displayed so viewers don't see a blank player.
-    </p>
-    <aside class="bcls-aside bcls-aside--information">
-      You should configure at least one fill slate before requesting a server-side ad.
-    </aside>
-    <p>To add a fill slate, follow these steps:</p>
+      フィルスレートとは、ライブストリーム広告ブレークに動的配信広告で埋められないギャップがある場合に表示される動画です。リクエストされた広告が広告休憩時間よりも短い場合は、塗りつぶしスレートが表示され、視聴者には空白のプレーヤーが表示されません。
+    </p> <aside class="bcls-aside bcls-aside--information"> サーバーサイド広告をリクエストする前に、フィルスレートを少なくとも 1 つ設定する必要があります。 </aside>
+    <p>塗りつぶしスレートを追加するには、次の手順に従います。</p>
     <ol class="bcls-tasklist">
       <li>
-        Click the <strong>ADMIN</strong> > <strong>Live Settings</strong> link in the Studio header.
-        <aside class="bcls-aside bcls-aside--information">
-          You must be an account administrator to access the <strong>ADMIN</strong> menu.
-        </aside>
+        クリック<strong>管理者</strong>&gt;<strong>ライブ設定</strong>Studio ヘッダーのリンク。 <aside class="bcls-aside bcls-aside--information"> にアクセスするには、アカウント管理者である必要があります。<strong>管理者</strong>メニュー。 </aside>
       </li>
       <li>
-        Click <strong>+ Add Fill Slate</strong>. You should be seeing the following form:
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/5-fill-slate.png" />
-        </figure>
+        クリック<strong>+ 塗りつぶしスレートを追加</strong>.次のフォームが表示されるはずです。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/5-fill-slate.png" /> </figure>
       </li>
-      <li>Enter a <strong>Name</strong> for your fill slate.</li>
-      <li>Enter the <strong>Source URL</strong> for the slate.</li>
-      <li>Click <strong>Save</strong>. The ingestion process for the slate will begin.</li>
+      <li>入力します<strong>名前</strong>あなたの塗りつぶしスレートのために。</li>
+      <li>入力します<strong>ソース URL</strong>スレート用。</li>
+      <li>クリック<strong>保存</strong>.スレートの摂取プロセスが始まります。</li>
     </ol>
-    <p>To delete a fill slate, click the delete button (<img alt="" src="/assets/images/s-monetization-img/live-ssai/node18588-delete-icon.png" />) next to the fill slate.</p>
-  </section>
-
-  <section class="bcls-section">
-    <h2 id="Creating_a_Live_event_that_supports_SSAI">Creating a Live event that supports SSAI</h2>
+    <p>塗りつぶしスレートを削除するには、削除ボタン (<img alt="" src="/assets/images/s-monetization-img/live-ssai/node18588-delete-icon.png" /> ) 塗りつぶしスレートの横。</p>  </section><section class="bcls-section">
+    <h2 id="Creating_a_Live_event_that_supports_SSAI">SSAI をサポートするライブイベントを作成する</h2>
     <p>
-      In order for a live event to use SSAI (Server-side Ad Insertion), the
-      <strong>Enable Server-Side Ad Insertion (SSAI)</strong> setting must be selected when the event is created, and a previously created fill slate should be chosen for playback.
+      ライブ イベントで SSAI (サーバー側の広告挿入) を使用するには、<strong>サーバー側の広告挿入 (SSAI) を有効にする</strong>イベントの作成時に設定を選択する必要があり、以前に作成したフィル スレートを再生用に選択する必要があります。
     </p>
     <p>
-      Follow these steps to create an Event that supports SSAI ads in Brightcove Beacon:
+      Brightcoveビーコンで SSAI広告をサポートするイベントを作成するには、次の手順に従います。
     </p>
     <ol class="bcls-tasklist">
-      <li>Open the <strong>Live</strong> module in Studio.</li>
-      <li>From the <strong>Manage Events</strong> page, click <strong>Create Event</strong>.</li>
+      <li>を開きます<strong>ライブ</strong>Studio のモジュール。</li>
+      <li>から<strong>イベントの管理</strong>ページ、クリック<strong>イベントを作成</strong>.</li>
       <li>
-        Enter your event details. For complete information on creating a live event using the Live module, please see
-        <a href="https://live.support.brightcove.com/live-module/creating-and-managing-live-events-using-live-module.html" target="_blank">
-          Creating and Managing Live Events using the Live Module</a>.
+        イベントの詳細を入力します。Live モジュールを使用してライブ イベントを作成する方法の詳細については、次を参照してください。<a href="https://live.support.brightcove.com/live-module/creating-and-managing-live-events-using-live-module.html" target="_blank"> Live モジュールを使用したライブ イベントの作成と管理</a>.
       </li>
-      <li>Click <strong>ADVANCED OPTIONS</strong> to expand the advanced options.</li>
-      <li>Check <strong>Enable Server-Side Ad Insertion (SSAI)</strong>. This will enable server-side ad insertion.</li>
+      <li>クリック<strong>高度なオプション</strong>詳細オプションを展開します。</li>
+      <li>小切手<strong>サーバー側の広告挿入 (SSAI) を有効にする</strong>.これにより、サーバー側の広告挿入が有効になります。</li>
       <li>
-        Select a <strong>Fill Slate</strong>. The fill slate will be displayed when there are gaps in a live stream ad break that cannot be filled with a dynamically-served ad.
+        を選択<strong>スレートを埋める</strong>.ライブストリーム広告ブレークに動的配信広告で埋められない隙間があると、塗りつぶしスレートが表示されます。
       </li>
       <li>
-        When the <strong>Ad Audio</strong> setting is checked, the audio levels on ads will be normalized based on the adjustment that is set. This can be used as a way to help make sure ads aren’t significantly louder than the content. Brightcove recommends selecting this option.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" width="450" height="700" src="/assets/images/s-monetization-img/live-ssai/6-ssai-check.png" />
-        </figure>
+        とき<strong>広告音声</strong>設定がオンになっている場合、広告のオーディオ レベルは、設定されている調整に基づいて正規化されます。これは、広告がコンテンツよりも大きく™大きく音を立てないようにするための方法として使用できます。Brightcoveでは、このオプションを選択することをお勧めします。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" width="450" height="700" src="/assets/images/s-monetization-img/live-ssai/6-ssai-check.png" /> </figure>
       </li>
-      <li>Click <strong>Create Event</strong></li>
+      <li>クリック<strong>イベントを作成</strong></li>
       <li>
-        The <strong>Control Room</strong> page will open with details about the Live event including the <strong>Streaming Endpoint (RTMP URL)</strong> and <strong>Stream Name</strong>. These values will be used by the encoder.
+        の<strong>制御室</strong>ページが開き、ライブ イベントに関する詳細が表示されます。<strong>ストリーミング エンドポイント (RTMP URL)</strong>と<strong>ストリーム名</strong>.これらの値は、エンコーダによって使用されます。
       </li>
       <li>
-        Configure your encoder and start the Live stream.
-        <aside class="bcls-aside bcls-aside--information">
-          To start streaming in the Live platform, you will need an Encoder, for information on how to use an encoder please read the following the documentation:
-          <p>
-            <a href="https://live.support.brightcove.com/get-started/step-step-using-live-module-telestream-wirecast.html" target="_blank">Step-by-Step: Using the Live Module with Telestream Wirecast</a>
+        エンコーダを設定し、ライブストリームを開始します。 <aside class="bcls-aside bcls-aside--information"> ライブプラットフォームでストリーミングを開始するには、エンコーダが必要です。エンコーダの使用方法については、次のドキュメントを参照してください。
+          <p> <a href="https://live.support.brightcove.com/get-started/step-step-using-live-module-telestream-wirecast.html" target="_blank">ステップバイステップ:ライブモジュールと三ストリームWirecastの使用</a>
           </p>
-          <p>
-            <a href="https://live.support.brightcove.com/get-started/step-step-using-live-module-open-broadcaster-software-obs.html" target="_blank">Step-by-Step: Using the Live Module with Open Broadcaster Software (OBS)</a>
-          </p>
-        </aside>
+          <p> <a href="https://live.support.brightcove.com/get-started/step-step-using-live-module-open-broadcaster-software-obs.html" target="_blank">ステップバイステップ:オープンブロードキャスタソフトウェア (OBS) でのライブモジュールの使用</a>
+          </p> </aside>
       </li>
       <li>
-        By default, the <strong>Control Room</strong> preview player shows the ad-free stream. Ads will not be shown in the <strong>Control Room</strong> unless a Live ad configuration is selected. Use the dropdown below to the player to select an ad configuration.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/7-select-ad-config.png" />
-        </figure>
+        デフォルトでは、<strong>制御室</strong>プレビュー プレーヤーには、広告なしのストリームが表示されます。広告は表示されません<strong>制御室</strong>ライブ広告構成が選択されていない場合。以下のドロップダウンを使用して、プレーヤーの広告設定を選択します。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/7-select-ad-config.png" /> </figure>
       </li>
       <li>
-        (Optional) Click the plus button (<img alt="" src="/assets/images/s-monetization-img/live-ssai/node18753-plus-icon.png" />) to select an additional ad configuration. Doing this will add another preview player on the <strong>Control Room</strong> page.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/8-two-preview-players.png" />
-        </figure>
+        (オプション) プラスボタン (<img alt="" src="/assets/images/s-monetization-img/live-ssai/node18753-plus-icon.png" /> ) をクリックして、追加の広告設定を選択します。これを行うと、別のプレビュー プレーヤーが<strong>制御室</strong>ページ。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/8-two-preview-players.png" /> </figure>
         <p>
-          Click the volume button below the preview player to control which player audio stream is active.
+          プレビュープレーヤーの下にある音量ボタンをクリックして、アクティブにするプレーヤーのオーディオストリームを制御します。
         </p>
       </li>
-    </ol>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Requesting_an_ad">Requesting an ad</h2>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="Requesting_an_ad">広告のリクエスト</h2>
     <p>
-      Follow these steps to request an ad in the Live <strong>Control Room</strong>:
+      ライブで広告をリクエストするには、次の手順に従ってください<strong>制御室</strong>:
     </p>
     <ol class="bcls-tasklist">
       <li>
-        Click <strong>Insert Ad</strong> and from the dropdown choose the length of your desired ad break.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" width="350" height="500" src="/assets/images/s-monetization-img/live-ssai/9-gotoad.png" />
-        </figure>
+        クリック<strong>広告を挿入</strong>ドロップダウンから、目的の広告ブレークの長さを選択します。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" width="350" height="500" src="/assets/images/s-monetization-img/live-ssai/9-gotoad.png" /> </figure>
       </li>
       <li>
-        Click <strong>Insert</strong> to insert an ad break into the live stream. If the ad doesn't fill the entire ad break time, the fill slate (being selected when the event was created) will be displayed.
+        クリック<strong>入れる</strong>ライブ ストリームに広告ブレークを挿入します。広告が広告休憩時間全体を満たさない場合は、（イベントの作成時に選択された）塗りつぶしスレートが表示されます。
       </li>
     </ol>
     <p>
-      Ads will be seen in the <strong>Control Room</strong> preview player and in players that are published using the Live module. This example shows 2 ads being displayed in the <strong>Control Room</strong>.
-    </p>
-    <figure class="bcls-figure">
-      <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/10-adsplayer.png" />
-    </figure>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Publishing_a_Live_event">Publishing a Live event in Brightcove Beacon</h2>
+      広告は<strong>制御室</strong>プレビュー プレーヤーと、Live モジュールを使用して公開されたプレーヤー。この例では、2 つの広告が<strong>制御室</strong>.
+    </p>     <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/10-adsplayer.png" /></figure></section><section class="bcls-section">
+    <h2 id="Publishing_a_Live_event">Brightcoveビーコンでのライブイベントの公開</h2>
     <p>
-      To publish your Live event with server-side ads in Brightcove Beacon, follow these steps:
+      Brightcove Beacon でサーバー側広告でライブイベントを公開するには、次の手順に従います。
     </p>
     <ol class="bcls-tasklist">
-      <li>In the Live <strong>Control Room</strong> click <strong>Publish and Embed</strong> in the left navigation.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/11-controlroom.png" />
-        </figure>
+      <li>ライブで<strong>制御室</strong>クリック<strong>公開して埋め込む</strong>左のナビゲーションにあります。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/11-controlroom.png" /> </figure>
       </li>
 
-      <li>In the <strong>Live Player Options</strong> select an <strong>Available Player</strong>.</li>
+      <li>の中に<strong>ライブ プレーヤーのオプション</strong>を選択<strong>利用可能なプレーヤー</strong>.</li>
       <li>
-        Select your <strong>Ad Configuration</strong> previously created in the <strong>Server-Side Ad Settings</strong>.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/12-select-player.png" />
-        </figure>
+        あなたの選択<strong>広告の構成</strong>で以前に作成された<strong>サーバー側の広告設定</strong>. <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/12-select-player.png" /> </figure>
       </li>
       <li>
-        After selecting your <strong>Available Player</strong> and <strong>Ad Configuration</strong>, a new Player URL will be generated.
+        お選びいただいた後、<strong>利用可能なプレーヤー</strong>と<strong>広告設定</strong>、新しいプレーヤー URL が生成されます。
       </li>
       <!-- <li>
         Copy the selected part of the URL as shown
@@ -235,76 +154,49 @@
           <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/13-player-url.png" />
         </figure>
       </li> -->
-      <li>Go to the Brightcove Beacon Platform.</li>
+      <li>Brightcoveのビーコンプラットフォームにアクセスしてください。</li>
       <li>
-        In Brightcove Beacon, in the upper menu, click the <strong>Advertisement</strong> tab.
+        Brightcove Beacon の上部メニューで、<strong>広告</strong>タブ。
       </li>
       <li>
-        Click the <strong>Add New Configuration</strong> button.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/14-newadconfig.png" />
-        </figure>
+        クリック<strong>新しい構成を追加</strong>ボタン。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/14-newadconfig.png" /> </figure>
       </li>
       <li>
-        Check to be sure you are seeing the <strong>New Advertisement</strong> form.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="New Advertisement form" src="/assets/images/s-monetization-img/live-ssai/15-newadconfig-settings.png" />
-        </figure>
+        が表示されていることを確認してください<strong>新しい広告</strong>形。 <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="新しい広告フォーム" src="/assets/images/s-monetization-img/live-ssai/15-newadconfig-settings.png" /> </figure>
       </li>
-      <li>Give your new advertisement configuration a <strong>Name</strong>.</li>
+      <li>新しい広告構成を与える<strong>名前</strong>.</li>
       <li id="Live_Ad_Config_ID">
-        In the <strong>Live Ad Config ID</strong>, paste your <strong>Ad Configuration ID</strong> that you created in a <a href="#Ad_Configuration_ID">previous step</a>.
-        <aside class="bcls-aside bcls-aside--information">When using Live events, the Beacon <strong>Live Ad Config ID</strong> value is the Ad Configuration ID instead of the Live playback token.</aside>
+        の中に<strong>ライブ広告構成 ID</strong> 、貼り付けます<strong>広告構成 ID</strong>で作成した<a href="#Ad_Configuration_ID">一つ前の手順</a>. <aside class="bcls-aside bcls-aside--information">ライブ イベントを使用する場合、ビーコン<strong>ライブ広告設定 ID</strong> value は、ライブ再生トークンではなく広告設定 ID です。</aside>
       </li>
-      <li>From the <strong>Provider</strong> menu select <strong>Brightcove SSAI</strong>.</li>
-      <li>Click the <strong>Create New Advertisement</strong> button.</li>
+      <li>から<strong>プロバイダ</strong>メニュー選択<strong>ブライトコーブ SSAI</strong> .</li>
+      <li>クリック<strong>新しい広告を作成する</strong>ボタン。</li>
       <li>
-        Click the upper menu <strong>Events</strong> tab and create or select your Live event. For more information in how to create a Brightcove Beacon Live Event, please see
-        the
-        <a href="https://beacon.support.brightcove.com/using-brightcove-beacon/streaming-live-event.html" target="_blank">Streaming a Live Event</a>
-        document.
-        <aside class="bcls-aside bcls-aside--information">
-          For the Live event to stream successfully in Brightcove Beacon, the <strong>Job ID</strong> and <strong>Stream Video ID</strong> must match the IDs of the current Live event.
-        </aside>
+        上のメニューをクリック<strong>イベント</strong>タブをクリックして、ライブ イベントを作成または選択します。Brightcove ビーコン ライブ イベントの作成方法の詳細については、<a href="https://beacon.support.brightcove.com/using-brightcove-beacon/streaming-live-event.html" target="_blank">ライブ イベントのストリーミング</a>資料。 <aside class="bcls-aside bcls-aside--information"> ブライトコーブ ビーコンでライブ イベントを正常にストリーミングするには、<strong>ジョブ ID</strong>と<strong>ストリーム動画 ID</strong>現在のライブ イベントの ID と一致する必要があります。 </aside>
       </li>
       <li>
-        In you Brightcove Beacon Live Event click the <strong>Rights & Scheduling</strong> tab.
+        Brightcove ビーコン ライブ イベントで、<strong>権利とスケジュール</strong>タブ。
       </li>
       <li>
-        In the <strong>Rights Type</strong> dropdown menu, select <strong>Advertising - AVOD</strong>.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/16-ad-avod.png" />
-        </figure>
+        の中に<strong>権利タイプ</strong>ドロップダウン メニュー、選択<strong>広告 - AVOD</strong> . <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/16-ad-avod.png" /> </figure>
       </li>
       <li>
-        In the <strong>Advertisement Configuration</strong> bottom menu, select your previously created advertisement configuration.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/17-ad-configuration.png" />
-        </figure>
+        の中に<strong>広告構成</strong>下部のメニューで、以前に作成した広告構成を選択します。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/17-ad-configuration.png" /> </figure>
       </li>
-      <li>Click the <strong>Update Event</strong> button.</li>
+      <li>クリック<strong>更新イベント</strong>ボタン。</li>
       <li>
-        Click on the <strong>Tools</strong> (wrench) button in the upper right of the screen. Then clear the cache.
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/18-clear-cache.png" />
-        </figure>
+        クリックしてください<strong>ツール</strong>画面右上の（レンチ）ボタン。その後、キャッシュをクリアします。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" src="/assets/images/s-monetization-img/live-ssai/18-clear-cache.png" /> </figure>
       </li>
       <li>
-        Open your Brightcove Beacon App and select your event (the event names and pictures on the image are for example purposes only).
-        <figure class="bcls-figure">
-          <img class="bcls-image--no-border" alt="" width="400" height="700" src="/assets/images/s-monetization-img/live-ssai/19-app-event.png" />
-        </figure>
+        Brightcove Beacon アプリを開き、イベントを選択します（画像上のイベント名と画像は例示のみを目的としています）。 <figure class="bcls-figure"> <img class="bcls-image--no-border" alt="" width="400" height="700" src="/assets/images/s-monetization-img/live-ssai/19-app-event.png" /> </figure>
       </li>
       <li>
-        In your Brightcove Beacon app, click on the <strong>Play</strong> button. You should now be able to see your Live event streaming, with ads inserted by SSAI from Video Cloud.
+        Brightcove ビーコン アプリで、<strong>遊ぶ</strong>ボタン。これで、Video Cloud から SSAI によって広告が挿入され、ライブイベントのストリーミングを見ることができます。
       </li>
     </ol>
     <p>
-      Once your event ends, you can save all or part of it as a clip that becomes a video asset in Video Cloud or a playable stream that can be shown in Brightcove Beacon. The Ads of the Live event will not be saved, but the cue points from where the ads were transmitted will be registered so that you can add new ads in a later VOD of your recorded Live event.
+      イベントが終了したら、その全部または一部を Video Cloud の動画アセットにするクリップとして、または Brightcove Beacon で表示できる再生可能なストリームとして保存できます。ライブイベントの広告は保存されませんが、広告を送信したキューポイントは登録されるため、録画したライブイベントの後のVODに新しい広告を追加できます。
     </p>
     <p>
-      For more information on how to create a clip, please see the
-      <a href="https://beacon.support.brightcove.com/using-brightcove-beacon/streaming-live-event.html#Clip" target="_blank">Creating a Clip from your Live event</a> section from the <em>Streaming a Live Event</em> document.
-    </p>
-  </section>
-</article>
+      クリップの作成方法の詳細については、<a href="https://beacon.support.brightcove.com/using-brightcove-beacon/streaming-live-event.html#Clip" target="_blank">ライブ イベントからクリップを作成する</a>からのセクション<em>ライブ イベントのストリーミング</em>資料。
+    </p>  </section></article>

@@ -1,65 +1,52 @@
-<h1>{{ page.title }}</h1>
-<article class="bcls-article">
-  <summary>{{ page.description }}</summary>
-  <section class="bcls-section">
-    <h2 id="Overview">Overview</h2>
+<h1>{{page.title}}</h1> <article class="bcls-article"> <summary>{{page.description}}</summary> <section class="bcls-section">
+    <h2 id="Overview">概要</h2>
     <p>
-      A Stripe account is needed to allow payments from customers for the following platforms:
+      以下のプラットフォームで顧客からの支払いを許可するには、Stripeアカウントが必要です。
     </p>
     <ul>
       <li>Web</li>
-      <li>LG Smart TV</li>
+      <li>LGスマートテレビ</li>
       <!-- <li>Panasonic Smart TV</li> -->
-      <li>Samsung Smart TV</li>
-      <li>Sony Smart TV</li>
-      <li>Toshiba Smart TV</li>
+      <li>サムスンのスマートテレビ</li>
+      <li>ソニースマートTV</li>
+      <li>東芝スマートテレビ</li>
     </ul>
     <p>
-      This means that Stripe is needed for the web app and all Smart TV apps <em>other than</em> Android TV and Fire TV.
+      これは、Web アプリとすべてのスマート TV アプリに Stripe が必要であることを意味します。<em>以外</em>Android TV と Fire TV。
     </p>
     <p>
-      The following steps provide an overview of the process of using Stripe with Brightcove Beacon:
+      次の手順では、Brightcoveビーコンで Stripe を使用するプロセスの概要を説明します。
     </p>
     <ol>
       <li>
-        Create your account by providing basic information (email, name, password).
+        基本情報（メールアドレス、名前、パスワード）を入力してアカウントを作成します。
       </li>
       <li>
-        Activate your account by providing information about your business.
+        ビジネスに関する情報を提供して、アカウントを有効にしてください。
       </li>
-      <li>Retrieve your Stripe API keys.</li>
+      <li>ストライプ API キーを取得します。</li>
       <li>
-        Supply Brightcove personnel the API keys so they can be added to the Brightcove Beacon Experience.
+        Brightcoveの従業員に API キーを提供して、Brightcoveのビーコンエクスペリエンスに追加できるようにします。
       </li>
-    </ol>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Creating_the_Stripe_account"> Creating and activating the Stripe account </h2>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="Creating_the_Stripe_account"> Stripeアカウントの作成とアクティブ化 </h2>
     <p></p>
     <ol class="bcls-tasklist">
-      <li>Browse to the <a href="https://stripe.com/">Stripe home page</a>.</li>
-      <li>Click the <strong>START NOW</strong> button.</li>
+      <li>参照してください<a href="https://stripe.com/">ストライプのホームページ</a>.</li>
+      <li>クリック<strong>今すぐ開始</strong>ボタン。</li>
       <li>
-        Fill in your basic information to create the account.
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/creating-stripe-account/info-create-account.png" alt="basic info to create account" />
-        </figure>
+        基本情報を入力してアカウントを作成します。 <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/creating-stripe-account/info-create-account.png" alt="アカウント作成の基本情報" /> </figure>
       </li>
-      <li>Verify your email address as directed.</li>
-      <li>On the <strong>Activate payments</strong> dialog, click <strong>Skip for now</strong>.</li>
-      <li>On the <strong>Home</strong> screen, on the right-hand side, you see where you can copy your <em>Publishable key</em> and <em>Secret key</em>.
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/creating-stripe-account/update-home-screen.png" alt="download keys">
-        </figure>
+      <li>指示に従って電子メールアドレスを確認します。</li>
+      <li>上で<strong>支払いを有効にする</strong>ダイアログ、クリック<strong>今のところスキップ</strong>.</li>
+      <li>上で<strong>家</strong>画面の右側に、コピーできる場所が表示されます<em>発行可能なキー</em>と<em>秘密鍵</em>. <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/creating-stripe-account/update-home-screen.png" alt="ダウンロードキー"> </figure>
       </li>
-      <li>To get your actual keys, you will have to fill in your personal and business information. You can do this by either clicking the link in the link in the tool tip, or clicking the <strong>Continue activating</strong> button near the top-left of the <strong>Home</strong> page.</li>
-      <li>Once you have filled out the required information, return to the <strong>Home</strong> page and get your live keys.</li>
-    </ol>
-  </section>
-  <section class="bcls-section">
-    <h2 id="Connecting_Stripe_to_Brightcove_Beacon">Connecting Stripe to Brightcove Beacon</h2>
+      <li>実際のキーを取得するには、個人情報とビジネス情報を入力する必要があります。これを行うには、ツール ヒントのリンク内のリンクをクリックするか、<strong>有効化を続ける</strong>の左上近くにあるボタン<strong>家</strong>ページ。</li>
+      <li>必要事項の入力が完了したら、ページに戻ります<strong>家</strong>ページを開いて、ライブ キーを取得します。</li>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="Connecting_Stripe_to_Brightcove_Beacon">ストライプをBrightcoveビーコンに接続する</h2>
     <p>
-      Once you have your Stripe API keys, you will give them to Brightcove personnel who are configuring your Brightcove Beacon Experience. They will associate your Stripe API keys with your Brightcove Beacon Experience so that when you configure Stripe to be used in your apps it is associated with your account.
-    </p>
-  </section>
-</article>
+      Stripe API キーを取得したら、Brightcoveのビーコンエクスペリエンスを設定しているBrightcoveの担当者にそのキーを渡します。Stripe API キーを Brightcove ビーコンエクスペリエンスに関連付けて、Stripe をアプリで使用するように設定すると、お客様のアカウントに関連付けられます。
+    </p>  </section></article>

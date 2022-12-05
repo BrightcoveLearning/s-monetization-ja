@@ -1,18 +1,13 @@
-<h1>{{ page.title }}</h1>
-<article class="bcls-article">
-  <summary>{{ page.description }}</summary>
-
-  <section class="bcls-section">
-    <h2 id="Introduction">Introduction</h2>
-    <p>Transactional Video On Demand (TVOD) is a monetization package where viewers can pay a one-time fee to either purchase or rent an OTT asset. A TVOD package can be associated with one asset or a bundle of assets, like a series or season. The viewer can be alloted a certain amount of time to view the asset, or it can be unlimited. </p>
-    <p>Unlike SVOD where viewers pay a subscription to access video content, TVOD viewers pay a fee for each piece of content they want to view.</p>
-    <p>TVOD packages give the viewers the following options for watching content:</p>
+<h1>{{page.title}}</h1> <article class="bcls-article"> <summary>{{page.description}}</summary> <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+    <p>TransactionalVideoOnDemand(TVOD)は、視聴者がOTT資産を購入またはレンタルするために1回限りの料金を支払うことができるマネタイズパッケージです。TVODパッケージは、シリーズやシーズンのように、1つの資産または資産のバンドルに関連付けることができます。ビューアには、アセットを表示するための一定の時間を割り当てることも、無制限に割り当てることもできます。 </p>
+    <p>視聴者が映像コンテンツにアクセスするために購読料を払うSVODとは異なり、TVOD視聴者は見たいコンテンツごとに手数料を払う。</p>
+    <p>TVODパッケージは、視聴者にコンテンツを視聴するための次のオプションを提供します。</p>
     <ul>
-      <li>Rent</li>
-      <li>Buy</li>
+      <li>賃貸料</li>
+      <li>購入</li>
     </ul>
-    <!-- <p>See the <a href="/monetization/monetization-options.html">Understanding Monetization Options</a> document for more information on AuthVOD, as well as all monetization packages you can use with Brightcove Beacon.</p> -->
-  </section>
+    <!-- <p>See the <a href="/monetization/monetization-options.html">Understanding Monetization Options</a> document for more information on AuthVOD, as well as all monetization packages you can use with Brightcove Beacon.</p> --> </section>
 
   <!-- <section class="bcls-section">
     <h2 id="section-name">Configuring an AuthVOD package overview</h2>
@@ -23,106 +18,100 @@
       <li>In Video Cloud Studio, add data to videos' custom fields to assign them to the AuthVOD package.</li>
       <li>In Brightcove Beacon, ingest the videos and clear the cache.</li>
     </ol>
-  </section> -->
-
-  <section class="bcls-section">
-    <h2 id="Creating_a_TVOD_package">Creating a TVOD package</h2>
-    <p>To create a TVOD package in Brightcove Beacon, follow these steps:</p>
+  </section> --> <section class="bcls-section">
+    <h2 id="Creating_a_TVOD_package">TVODパッケージの作成</h2>
+    <p>Brightcove BeaconでTVODパッケージを作成するには、次の手順に従います。</p>
     <ol class="bcls-tasklist">
       <li>
-        <p>Login to Brightcove Beacon.</p>
+        <p>Brightcoveビーコンにログインします。</p>
         <ol>
-          <li>In the top navigation, select <strong>Commerce</strong></li>
-          <li>In the left navigation, select <strong>TVOD Plans</strong></li>
-          <li>click <strong>Add New TVOD Plan</strong></li>
-        </ol>
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/commerce.png" alt="Commerce top navigation">
-        </figure>
+          <li>上部のナビゲーションで、<strong>商業</strong></li>
+          <li>左側のナビゲーションで、<strong> TVODプラン</strong></li>
+          <li>クリック<strong>新しい TVOD プランを追加</strong></li>
+        </ol> <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/commerce.png" alt="コマーストップナビゲーション"> </figure>
       </li>
       <li>
-        <p>For the <strong>Package</strong> tab, enter details for your TVOD Plan.</p>
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/package-tab-rent.png" alt="Package tab">
-        </figure> 
+        <p>のために<strong>パッケージ</strong>タブで、TVOD プランの詳細を入力します。</p> <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/package-tab-rent.png" alt="[Package]タブ"> </figure> 
         <p>
-          This table contains the fields you will find in the <strong>Package</strong> tab: </p>
+          このテーブルには、<strong>パッケージ</strong>タブ： </p>
         <table class="bcls-table">
           <thead class="bcls-table__head">
             <tr>
-              <th>Field</th>
-              <th>Required</th>
-              <th>Description</th>
+              <th>フィールド</th>
+              <th>必須</th>
+              <th>説明</th>
             </tr>
           </thead>
           <tbody class="bcls-table__body">
             <tr>
-              <td><strong>Name</strong></td>
-              <td>Yes</td>
-              <td>Name of the TVOD package</td>
+              <td><strong>名前</strong></td>
+              <td>はい</td>
+              <td>TVODパッケージの名前</td>
             </tr>
             <tr>
-              <td><strong>TVOD Plan Type</strong></td>
-              <td>Yes</td>
+              <td><strong>TVODプランタイプ</strong></td>
+              <td>はい</td>
               <td>
-                Select one:
+                次のいずれかを選択します。
                 <ul>
-                  <li><strong>Multiple Assets</strong> - Associate a bundle of assets with this plan; for example, viewers can purchase/rent a full series or season</li>
-                  <li><strong>Individual Assets</strong> - Viewers can buy or rent 1 asset</li>
+                  <li><strong>複数のアセット</strong>- アセットのバンドルをこのプランに関連付けます。たとえば、視聴者は全シリーズまたはシーズンを購入またはレンタルできます</li>
+                  <li><strong>個別資産</strong>- 視聴者は 1 つのアセットを購入またはレンタルできます</li>
                 </ul>
               </td>
             </tr>
             <tr>
-              <td><strong>Purchase Type</strong></td>
-              <td>Yes</td>
+              <td><strong>購入タイプ</strong></td>
+              <td>はい</td>
               <td>
-                Select one:
+                次のいずれかを選択します。
                 <ul>
-                  <li><strong>Buy</strong> - Allow viewers to purchase an asset or bundle of assets</li>
-                  <li><strong>Rent</strong> - Allow viewers to rent an asset or bundle of assets for a period of time</li>
+                  <li><strong>買う</strong>- 視聴者がアセットまたはアセットのバンドルを購入できるようにする</li>
+                  <li><strong>家賃</strong>- 視聴者がアセットまたはアセットのバンドルを一定期間レンタルできるようにする</li>
                 </ul>
               </td>
             </tr>
             <tr>
-              <td><strong>Rent period</strong></td>
-              <td>No</td>
+              <td><strong>賃貸期間</strong></td>
+              <td>いいえ</td>
               <td>
-                Number of days an asset is available for viewing once it has been rented. This field appears when the <strong>Purchase Type</strong> is set to <strong>Rent</strong>.
+                資産がレンタルされた後に表示できる日数。このフィールドは、<strong>購入タイプ</strong>に設定されています<strong>家賃</strong>.
               </td>
             </tr>
             <tr>
-              <td><strong>Status</strong></td>
-              <td>Yes</td>
+              <td><strong>ステータス</strong></td>
+              <td>はい</td>
               <td>
-                  Select one of the following types:
+                  次のいずれかのタイプを選択します。
                   <ul>
                       <li>
-                          Published
+                          公開済み
                       </li>
                       <li>
-                          Unpublished
+                          未公開
                       </li>
                   </ul>
               </td>
             </tr>
             <tr>
-              <td><strong>Allow Downloads</strong></td>
-              <td>Yes</td>
+              <td><strong>ダウンロードを許可</strong></td>
+              <td>はい</td>
               <td>
-                  Set to <strong>Yes</strong> to allow this series to be downloaded by the user for offline playback. For details, see the <a href="https://beacon-help.support.brightcove.com/media/offline-playback-beacon.html">Offline Playback with Brightcove Beacon Apps</a> document.
+                  に設定<strong>はい</strong>ユーザーがこのシリーズをダウンロードしてオフラインで再生できるようにします。詳細については、<a href="https://beacon-help.support.brightcove.com/media/offline-playback-beacon.html"> Brightcove ビーコン アプリによるオフライン再生</a>資料。
               </td>
             </tr>
             <tr>
-              <td><strong>Payment methods to use</strong></td>
-              <td>Yes</td>
+              <td><strong>お支払い方法</strong></td>
+              <td>はい</td>
               <td>
-                Select one of the following types:
+                次のいずれかのタイプを選択します。
                   <ul>
                       <li>
-                          Stripe
+                          ストライプ
                       </li>
                       <li>
-                          Beacon Store
+                          ビーコンストア
                       </li>
                   </ul> 
               </td>
@@ -131,216 +120,188 @@
         </table>
       </li>
       <li>
-        <p>If you are using Stripe, select <strong>Stripe</strong> to see <strong>Payment methods details</strong>.</p>
-        <aside class="bcls-aside bcls-aside--tip">Availability is for the TVOD package. For example, if the <strong>Permitted locations</strong> is set for the US, then all viewers will be able play a movie or asset associated with this package, but only viewers in the US can buy/rent the asset.</aside>
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/stripe-details.png" alt="Stripe payment details">
-        </figure> 
+        <p>Stripe を使用している場合は、<strong>縞</strong>見る<strong>お支払い方法の詳細</strong>.</p> <aside class="bcls-aside bcls-aside--tip">TVODパッケージの提供状況です。たとえば、<strong>許可された場所</strong>が米国向けに設定されている場合、すべての視聴者はこのパッケージに関連付けられた映画またはアセットを再生できますが、アセットを購入またはレンタルできるのは米国の視聴者のみです。</aside> <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/stripe-details.png" alt="ストライプ決済の詳細"> </figure> 
         <p>
-          This table contains the fields Stripe payment details: </p>
+          次の表には、Stripepaymentdetailsフィールドが含まれています。 </p>
         <table class="bcls-table">
           <thead class="bcls-table__head">
             <tr>
-              <th>Field</th>
-              <th>Required</th>
-              <th>Description</th>
+              <th>フィールド</th>
+              <th>必須</th>
+              <th>説明</th>
             </tr>
           </thead>
           <tbody class="bcls-table__body">
             <tr>
-              <td><strong>Start Time</strong></td>
-              <td>Yes</td>
-              <td>Schedule a starting date this package will be available</td>
+              <td><strong>開始時刻</strong></td>
+              <td>はい</td>
+              <td>このパッケージが利用可能になる開始日をスケジュールします。</td>
             </tr>
             <tr>
-                <td><strong>End Time</strong></td>
-                <td>Yes</td>
+                <td><strong>終了時刻</strong></td>
+                <td>はい</td>
                 <td>
-                    Schedule an ending date when this package will no longer be available
+                    このパッケージが使用できなくなる終了日をスケジュールします。
                 </td>
             </tr>
             <tr>
-              <td><strong>Devices to publish</strong></td>
-              <td>Yes</td>
+              <td><strong>公開するデバイス</strong></td>
+              <td>はい</td>
               <td>
-                  Add the devices you wish to publish to. Select the <strong>Select / Unselect All Devices</strong> to see a list of available devices.
+                  公開するデバイスを追加します。を選択<strong>すべてのデバイスを選択/選択解除</strong>使用可能なデバイスのリストを表示します。
               </td>
             </tr>
             <tr>
-              <td><strong>Permitted locations</strong></td>
-              <td>Yes</td>
+              <td><strong>許可された場所</strong></td>
+              <td>はい</td>
               <td>
-                <p>Select the locations where you want to stream your content, if no restrictions enter <strong>World</strong>.</p>
-                <aside class="bcls-aside bcls-aside--information">
-                    <p>If you don't specify at least 1 permitted location, then you may see this message from your app:</p>
-                    <figure class="bcls-figure">
-                        <img class="bcls-image" src="/assets/images/s-general-img/series-seasons-episodes/no-content.jpg" alt="No content" /> </figure>
-                </aside>
+                <p>制限がない場合は、コンテンツをストリーミングする場所を選択します<strong>世界</strong>.</p> <aside class="bcls-aside bcls-aside--information">
+                    <p>許可された場所を 1 つ以上指定しないと、アプリから次のメッセージが表示されることがあります。</p> <figure class="bcls-figure">
+                        <img class="bcls-image" src="/assets/images/s-general-img/series-seasons-episodes/no-content.jpg" alt="コンテンツなし" />  </figure></aside>
               </td>
             </tr>
             <tr>
-              <td><strong>Denied locations</strong></td>
-              <td>No</td>
+              <td><strong>拒否された場所</strong></td>
+              <td>いいえ</td>
               <td>
-                  Select the locations where you DO NOT want to stream your content. Enter <strong>World</strong> if you have no restrictions.
+                  コンテンツをストリーミングしない場所を選択します。入る<strong>世界</strong>制限がなければ。
               </td>
             </tr>
             <tr>
-              <td><strong>Price</strong></td>
-              <td>Yes</td>
+              <td><strong>価格</strong></td>
+              <td>はい</td>
               <td>
-                  Specify the price that users must pay to view content associated with this package.
+                  このパッケージに関連付けられているコンテンツを表示するためにユーザが支払う必要がある価格を指定します。
               </td>
             </tr>
             <tr>
-              <td><strong>Currency</strong></td>
-              <td>Yes</td>
+              <td><strong>通貨</strong></td>
+              <td>はい</td>
               <td>
-                  Specify the currency type for the package price.
+                  パッケージ価格の通貨タイプを指定します。
               </td>
             </tr>
             <tr>
-              <td><strong>Product Description</strong></td>
-              <td>Yes</td>
+              <td><strong>製品の説明</strong></td>
+              <td>はい</td>
               <td>
-                Product Description is sent to Stripe so that you can identify the package.
+                ProductDescriptionがStripeに送信され、パッケージを識別できます。
               </td>
             </tr>
           </tbody>
         </table>
       </li>
       <li>
-        <p>If you are using the Beacon store, select <strong>Beacon Store</strong> to see <strong>Payment methods details</strong>.</p>
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/beacon-store-details.png" alt="Beacon Store payment details">
-        </figure> 
+        <p>ビーコン ストアを使用している場合は、<strong>ビーコンストア</strong>見る<strong>お支払い方法の詳細</strong>.</p> <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/beacon-store-details.png" alt="BeaconStore決済の詳細"> </figure> 
         <p>
-          This table contains the fields Beacon Store payment details: </p>
+          次の表には、BeaconStoreの支払いの詳細フィールドが含まれています。 </p>
         <table class="bcls-table">
           <thead class="bcls-table__head">
             <tr>
-              <th>Field</th>
-              <th>Required</th>
-              <th>Description</th>
+              <th>フィールド</th>
+              <th>必須</th>
+              <th>説明</th>
             </tr>
           </thead>
           <tbody class="bcls-table__body">
             <tr>
-              <td><strong>Beacon Store ID</strong></td>
-              <td>Yes</td>
-              <td>TVOD with the Beacon Store requires setup of the SKU. The <strong>Beacon Store ID</strong> is the <strong>package_name</strong> sent to the Beacon Store using the API.</td>
+              <td><strong>ビーコンストアID</strong></td>
+              <td>はい</td>
+              <td>BeaconStoreを搭載したTVODでは、SKUを設定する必要があります。の<strong>ビーコンストアID</strong>それは<strong>パッケージ名</strong>API を使用してビーコン ストアに送信されます。</td>
             </tr>
           </tbody>
         </table>
       </li>
       <li>
-        <p>For the <strong>Textual Data</strong> tab, enter details for your plan.</p>
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/textual-data.png" alt="Textual Data tab">
-        </figure> 
+        <p>のために<strong>テキストデータ</strong>タブで、プランの詳細を入力します。</p> <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/textual-data.png" alt="[TextData]タブ"> </figure> 
         <p>
-          This table contains the fields you will find in the <strong>Textual Data</strong> tab: </p>
+          このテーブルには、<strong>テキストデータ</strong>タブ： </p>
         <table class="bcls-table">
           <thead class="bcls-table__head">
             <tr>
-              <th>Field</th>
-              <th>Required</th>
-              <th>Description</th>
+              <th>フィールド</th>
+              <th>必須</th>
+              <th>説明</th>
             </tr>
           </thead>
           <tbody class="bcls-table__body">
             <tr>
-              <td><strong>Pack Name</strong></td>
-              <td>Yes</td>
-              <td>Display name shown to viewers</td>
+              <td><strong>パック名</strong></td>
+              <td>はい</td>
+              <td>ビューアに表示される表示名</td>
             </tr>
             <tr>
-              <td><strong>Headline</strong></td>
-              <td>Yes</td>
-              <td>Description shown to viewers, for example <em>Holiday Special!</em></td>
+              <td><strong>ヘッドライン</strong></td>
+              <td>はい</td>
+              <td>視聴者に表示される説明。例:<em>ホリデースペシャル！</em></td>
             </tr>
           </tbody>
         </table>
       </li>
       <li>
-        <p>For the <strong>Non-Textual Data</strong> tab, enter details for your plan.</p>
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/non-textual-data.png" alt="Non-Textual Data tab">
-        </figure> 
+        <p>のために<strong>非テキストデータ</strong>タブで、プランの詳細を入力します。</p> <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/non-textual-data.png" alt="[Non-TextualData]タブ"> </figure> 
         <p>
-          This table contains the fields you will find in the <strong>Non-Textual Data</strong> tab: </p>
+          このテーブルには、<strong>非テキストデータ</strong>タブ： </p>
         <table class="bcls-table">
           <thead class="bcls-table__head">
             <tr>
-              <th>Field</th>
-              <th>Required</th>
-              <th>Description</th>
+              <th>フィールド</th>
+              <th>必須</th>
+              <th>説明</th>
             </tr>
           </thead>
           <tbody class="bcls-table__body">
             <tr>
-              <td><strong>Package Image</strong></td>
-              <td>No</td>
-              <td>Supply an image for use next to the package name</td>
+              <td><strong>パッケージイメージ</strong></td>
+              <td>いいえ</td>
+              <td>パッケージ名の横に使用するイメージを指定します。</td>
             </tr>
           </tbody>
         </table>
       </li>
-      <li>Click <strong>Create Package</strong>.</li>
-    </ol>
-  </section>
-
-  <section class="bcls-section">
-    <h2 id="Assigning_TVOD_packages_to_content">Assigning TVOD packages to content</h2>
-    <p>To add content to TVOD packages, edit each asset and associate it with applicable packages. The following content types can be used with TVOD packages:</p>
+      <li>クリック<strong>パッケージの作成</strong>.</li>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="Assigning_TVOD_packages_to_content">コンテンツへのTVODパッケージの割り当て</h2>
+    <p>TVODパッケージにコンテンツを追加するには、各アセットを編集して、該当するパッケージに関連付けます。TVODパッケージでは、次のコンテンツタイプを使用できます。</p>
     <ul>
-      <li>Movies</li>
-      <li>Series, Seasons, and Episodes</li>
-      <li>Channels and Live Events</li>
+      <li>映画</li>
+      <li>シリーズ、シーズン、エピソード</li>
+      <li>チャネルおよびライブイベント</li>
       <!-- <li>Playlists and Pages</li> -->
       <!-- <li>Programs</li> -->
     </ul>
-    <p>These steps walk through adding a TVOD package to a movie, but the process is similar for other asset types.</p>
+    <p>これらの手順では、TVODパッケージをムービーに追加しますが、プロセスは他のアセットタイプでも同様です。</p>
     <ol class="bcls-tasklist-restart">
       <li>
-        <p>Return to Brightcove Beacon. In the top navigation, select <strong>Movies</strong>. Click the <strong>Name</strong> link for your movie.</p>
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/movie-home.png" alt="Movies list">
-        </figure>
+        <p>Brightcove Beaconに戻ります。上部のナビゲーションで、<strong>映画</strong>.クリック<strong>名前</strong>あなたの映画のリンク。</p> <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/movie-home.png" alt="ムービーリスト"> </figure>
       </li>
       <li>
-        <p>Click the <strong>Rights & Scheduling</strong> tab.</p>
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/movie-rights.png" alt="Rights & Scheduling tab">
-        </figure>
+        <p>クリック<strong>権利とスケジュール</strong>タブ。</p> <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/movie-rights.png" alt="権利 &amp; [Scheduling]タブ"> </figure>
       </li>
       <li>
-        <p>In the <strong>Availability Details</strong> section, click <strong>Rights Type</strong> and select <strong>Buy/Rent - TVOD</strong>.</p>
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/buy-rent-tvod.png" alt="Rights Type">
-        </figure>
+        <p>の中に<strong>在庫状況の詳細</strong>セクション、クリック<strong>権利タイプ</strong>そして選択<strong>購入/レンタル - TVOD</strong> .</p> <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/buy-rent-tvod.png" alt="権利タイプ"> </figure>
       </li>
       <li>
-        <p>Click in the <strong>Select Package</strong> input area and select one or more TVOD packages that you want associated with this movie.</p>
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/select-pkg.png" alt="Select Package">
-        </figure>
+        <p>をクリックします。<strong>パッケージを選択</strong>入力エリアをクリックし、この映画に関連付ける 1 つ以上の TVOD パッケージを選択します。</p> <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/select-pkg.png" alt="パッケージの選択"> </figure>
       </li>
-      <li>Click <strong>Update Movie</strong>.</li>
+      <li>クリック<strong>ムービーを更新</strong>.</li>
       <li>
-        <p>Once you associate TVOD packages with content, then you will see that content listed in the package details.</p>
-        <p>Return to your TVOD plan.</p>
+        <p>TVODパッケージをコンテンツに関連付けると、そのコンテンツがパッケージの詳細に表示されます。</p>
+        <p>TVODプランに戻ります。</p>
         <ol>
-          <li>In the top navigation, select <strong>Commerce</strong></li>
-          <li>In the left navigation, select <strong>TVOD Plans</strong></li>
-          <li>click <strong>Content</strong> tab</li>
+          <li>上部のナビゲーションで、<strong>商業</strong></li>
+          <li>左側のナビゲーションで、<strong> TVODプラン</strong></li>
+          <li>クリック<strong>コンテンツ</strong>タブ</li>
         </ol>
-        <p>Here, you will see content associated with this plan.</p>
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/tvod-content.png" alt="TVOD Content tab">
-        </figure>
+        <p>ここに、このプランに関連する内容が表示されます。</p> <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-tvod/tvod-content.png" alt="[TVODContent]タブ"> </figure>
       </li>
-    </ol>
-  </section>
-
-</article>
+    </ol>  </section></article>

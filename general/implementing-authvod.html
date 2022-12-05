@@ -1,269 +1,175 @@
-<h1>{{ page.title }}</h1>
-<article class="bcls-article">
-  <summary>{{ page.description }}</summary>
-  {% if site.product_short == "Beacon" or site.product_short == "CorpTV" %}
-
-  <aside class="bcls-aside bcls-aside--information">NOTE: In this topic, some of the steps are performed in Beacon Classic.</aside>
-  <section class="bcls-section">
-    <h2 id="Understanding_AuthVOD">Understanding AuthVOD</h2>
-    <p>AuthVOD (AUTHenticated Video On Demand) is a monetization package where viewers must authenticate, that is enter a username and password, to the Brightcove Beacon app to watch videos included in the package. If the viewer is NOT authenticated and tries to view a video in an AuthVOD package a <strong>Sign In</strong> prompt is displayed instead of the play button.</p>
-    <figure class="bcls-figure">
-      <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/prompt-for-sign-in.png" alt="prompt for sign in">
-    </figure>
-    <p>The videos may or may not show advertisements, depending on how you configure that package.</p>
-    <p>See the <a href="/monetization/general/monetization-options.html">Understanding Monetization Options</a> document for more information on AuthVOD, as well as all monetization packages you can use with Brightcove Beacon.</p>
-  </section>
-
-  <section class="bcls-section">
-    <h2 id="Configuring_an_AuthVOD_package_overview">Configuring an AuthVOD package overview</h2>
-    <p>Here are the high-level steps in configuring an AuthVOD package:</p>
+<h1>{{page.title}}</h1> <article class="bcls-article"> <summary>{{ page.description }}</summary> {% if site.product_short == "Beacon" または site.product_short == "CorpTV" %}<aside class="bcls-aside bcls-aside--information">ノート：このトピックでは、手順の一部をBeaconClassicで実行します。</aside> <section class="bcls-section">
+    <h2 id="Understanding_AuthVOD">AuthVODを理解する</h2>
+    <p>AuthVOD（AUTHenticated Video On Demand）は、パッケージに含まれるビデオを視聴するために、視聴者がBrightcove Beaconアプリに対して認証、つまりユーザー名とパスワードを入力する必要がある収益化パッケージです。視聴者が認証されておらず、AuthVOD パッケージでビデオを視聴しようとすると、<strong>ログイン</strong>再生ボタンの代わりにプロンプトが表示されます。</p> <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/prompt-for-sign-in.png" alt="サインインのプロンプト"> </figure>
+    <p>そのパッケージの構成方法に応じて、ビデオに広告が表示される場合と表示されない場合があります。</p>
+    <p>を参照してください<a href="/monetization/general/monetization-options.html">収益化オプションについて</a>AuthVOD、および Brightcove Beacon で使用できるすべての収益化パッケージの詳細については、ドキュメントを参照してください。</p>  </section><section class="bcls-section">
+    <h2 id="Configuring_an_AuthVOD_package_overview">AuthVODパッケージの構成の概要</h2>
+    <p>AuthVODパッケージを構成するための高レベルの手順は次のとおりです。</p>
     <ol>
-      <li>In Beacon Classic, create an <strong>unpublished</strong>, cost free package.</li>
-      <li>If ads are desired, supply an ad provider when creating the package.</li>
-      <li>In Beacon Studio, add data to videos' custom fields to assign them to the AuthVOD package.</li>
-    </ol>
-  </section>
-
-  <section class="bcls-section">
-    <h2 id="section-name">Creating a package in Brightcove Beacon Classic</h2>
-    <p>Here are the detailed steps to follow in Beacon Classic to create an AuthVOD package:</p>
+      <li>Beacon Classic で、<strong>未発表</strong>、無料パッケージ。</li>
+      <li>広告が必要な場合は、パッケージの作成時に広告プロバイダーを提供してください。</li>
+      <li>BeaconStudioで、ビデオのカスタムフィールドにデータを追加して、AuthVODパッケージに割り当てます。</li>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="section-name">Brightcove BeaconClassicでのパッケージの作成</h2>
+    <p>BeaconClassicでAuthVODパッケージを作成する手順の詳細を次に示します。</p>
     <ol class="bcls-tasklist">
-      <li>Click the <strong>Commerce</strong> tab along the top of Beacon Classic.
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/navigation-to-add.png" alt="get to add new package button">
-        </figure>
+      <li>クリック<strong>商業</strong>ビーコンクラシックの上部にあるタブ。 <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/navigation-to-add.png" alt="新しいパッケージボタンを追加する"> </figure>
       </li>
-      <li>Select <strong>Packages</strong> from the left navigation.</li>
-      <li>Click the <strong>Add New Package</strong> button.</li>
-      <li>On the <strong>Package</strong> tab:
+      <li>選択する<strong>パッケージ</strong>左のナビゲーションから。</li>
+      <li>クリック<strong>新しいパッケージを追加</strong>ボタン。</li>
+      <li>上で<strong>パッケージ</strong>タブ：
         <ol type="a">
-          <li>Supply the internal name.</li>
-          <li>Set the <strong>Billing Frequency</strong> to <strong>Free</strong>.</li>
-          <li>Be sure to leave the <strong>Status</strong> as <strong>Unpublished</strong>.</li>
-        </ol>
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/package-tab.png" alt="package tab">
-        </figure>
+          <li>内部名を指定します。</li>
+          <li>をセットする<strong>請求頻度</strong>に<strong>無料</strong>.</li>
+          <li>必ず残してください<strong>状態</strong>なので<strong>未発表</strong>.</li>
+        </ol> <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/package-tab.png" alt="[パッケージ] タブ"> </figure>
       </li>
-      <li>If you wish to use advertising, you can click the <strong>Yes</strong> radio button for <strong>Advertisement</strong> then choose an <strong>Ads Provider</strong> from the dropdown.
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/package-tab-ads.png" alt="package tab">
-        </figure>
+      <li>広告を使用したい場合は、<strong>はい</strong>のラジオボタン<strong>広告</strong>次に、<strong>広告プロバイダー</strong>ドロップダウンから。 <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/package-tab-ads.png" alt="[パッケージ] タブ"> </figure>
       </li>
-      <li>On the <strong>Textual Data</strong> tab enter the name visible to viewers, and a headline about the package.</li>
-      <li>If desired, supply an image that will display with the package information.</li>
-      <li>On the <strong>Streams</strong> tab, enter values for the maximum number of devices that can stream at the same time, and the maximum number of devices that can have an active connection.</li>
-      <li>If you wish finer control of the package availability, click the <strong>Yes</strong> radio button for <strong>Advanced Streams?</strong>, then complete form with finer availability options.</li>
-    </ol>
-  </section>
-
-  <section class="bcls-section">
-    <h2 id="Add_videos_to_the_package_in_Beacon_Studio">Add videos to the package in Beacon Studio</h2>
-    <p>To add content to the package, you need to use Beacon Studio to assign values to custom fields. The two custom fields that you must assign values to for an AuthVOD package are:</p>
+      <li>上で<strong>テキストデータ</strong>タブには、閲覧者に表示される名前と、パッケージに関する見出しを入力します。</li>
+      <li>必要に応じて、パッケージ情報とともに表示される画像を提供します。</li>
+      <li>上で<strong>ストリーム</strong>タブで、同時にストリーミングできるデバイスの最大数と、アクティブな接続を持つことができるデバイスの最大数の値を入力します。</li>
+      <li>パッケージの可用性をより細かく制御したい場合は、<strong>はい</strong>のラジオボタン<strong>高度なストリーム?</strong>をクリックしてから、詳細な空室状況オプションをフォームに記入してください。</li>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="Add_videos_to_the_package_in_Beacon_Studio">BeaconStudioのパッケージにビデオを追加する</h2>
+    <p>パッケージにコンテンツを追加するには、BeaconStudioを使用してカスタムフィールドに値を割り当てる必要があります。AuthVODパッケージに値を割り当てる必要がある2つのカスタムフィールドは次のとおりです。</p>
     <ul>
-      <li>beacon.rights.&lt;counter&gt;.packageName</li>
-      <li>beacon.rights.&lt;counter&gt;.type</li>
-    </ul>
-    <aside class="bcls-aside bcls-aside--tip">For more information on creating and using custom fields with Brightcove Beacon, see the <a href="/monetization/general/vc-custom-fields.html">Custom Fields for Monetization</a> document.</aside>
-    <p>The steps below detail the process of assigning values to those custom fields.</p>
-    <p>For each video you wish to be in the package, complete the following steps:</p>
+      <li>beacon.rights.&lt; &gt;counter .packageName</li>
+      <li>beacon.rights.&lt; &gt;カウンタ.type</li>
+    </ul> <aside class="bcls-aside bcls-aside--tip">Brightcove Beacon でカスタム フィールドを作成および使用する方法の詳細については、<a href="/monetization/general/vc-custom-fields.html">収益化のためのカスタム フィールド</a>資料。</aside>
+    <p>以下の手順では、これらのカスタムフィールドに値を割り当てるプロセスについて詳しく説明します。</p>
+    <p>パッケージに入れたいビデオごとに、次の手順を実行します。</p>
     <ol class="bcls-tasklist-restart">
-      <li>Log in to Beacon Studio.</li>
-      <li>From the primary navigation, select the <strong>Media</strong> module.</li>
-      <li>Click the video name to which you wish to add custom field values, which displays that video's properties.</li>
-      <li>Click the <strong>Video and Tracks</strong> tab.</li>
-      <li>In the <strong>CUSTOM FIELDS</strong> section (right side), click <strong>Edit</strong> button.</li>
-      <li>For the <strong>beacon.rights.&lt;counter&gt;.packageName</strong>, enter the name of your AuthVOD package created earlier.</li>
-      <li>For the <strong>beacon.rights.&lt;counter&gt;.type</strong>, enter <strong>SVOD</strong>.</li>
-      <li>At either the top or bottom of the list of custom fields, click <strong>Save</strong>.</li>
+      <li>BeaconStudioにログインします。</li>
+      <li>プライマリ ナビゲーションから、<strong>メディア</strong>モジュール。</li>
+      <li>カスタムフィールド値を追加するビデオ名をクリックします。これにより、そのビデオのプロパティが表示されます。</li>
+      <li>クリック<strong>ビデオとトラック</strong>タブ。</li>
+      <li>の中に<strong>カスタムフィールド</strong>セクション (右側) をクリックします。<strong>編集</strong>ボタン。</li>
+      <li>のために<strong>beacon.rights.&lt;カウンター&gt;.packageName</strong>で、以前に作成した AuthVOD パッケージの名前を入力します。</li>
+      <li>のために<strong>beacon.rights.&lt;カウンター&gt;.type</strong> 、 入力<strong>SVOD</strong> .</li>
+      <li>カスタム フィールドのリストの上部または下部で、<strong>保存</strong>.</li>
     </ol>
-    <p>The following screenshot shows an example of actual values used in the custom fields. In this case, the <strong>counter</strong> is zero (highlighted in red) and the package name is <strong>MyAuthVODPackage</strong> (highlighted in yellow). Remember when implementing AuthVOD, the <strong>beacon.rights.&lt;counter&gt;.type</strong> is always set to <strong>SVOD</strong>.</p>
-    <figure class="bcls-figure">
-      <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/values-in-custom-fields.png" alt="custom field values">
-    </figure>
-  </section>
-
-  <section class="bcls-section">
-    <h2 id="ingest_videos_into_brightcove_beacon">Ingest videos into Brightcove Beacon</h2>
-    <p>Changes that are made to videos in Video Cloud Studio need to be ingested into Brightcove Beacon. This is done automatically every hour, but you can also ingest manually on demand. The broad steps will be detailed below.</p>
-    <aside class="bcls-aside bcls-aside--tip">For complete details on ingesting videos see the <a href="https://beacon.support.brightcove.com/syncing-with-video-cloud/syncing-video-cloud-catalog.html">Forcing a Sync</a> document.</aside>
+    <p>次のスクリーンショットは、カスタムフィールドで使用される実際の値の例を示しています。この場合、<strong>カウンター</strong>はゼロ (赤で強調表示) で、パッケージ名は<strong>MyAuthVODパッケージ</strong>（黄色で強調表示されました）。AuthVOD を実装するときは、<strong> beacon.rights.&lt;カウンター&gt;.type</strong>常に設定されています<strong>SVOD</strong> .</p> <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/values-in-custom-fields.png" alt="カスタムフィールド値">   </figure></section><section class="bcls-section">
+    <h2 id="ingest_videos_into_brightcove_beacon">Brightcoveビーコンにビデオを取り込む</h2>
+    <p>Video Cloud Studioでビデオに加えられた変更は、Brightcove Beaconに取り込む必要があります。これは1時間ごとに自動的に行われますが、必要に応じて手動で取り込むこともできます。大まかな手順については、以下で詳しく説明します。</p> <aside class="bcls-aside bcls-aside--tip">ビデオの取り込みの詳細については、<a href="https://beacon.support.brightcove.com/syncing-with-video-cloud/syncing-video-cloud-catalog.html">同期の強制</a>資料。</aside>
     <ol class="bcls-tasklist-restart">
-      <li>In Brightcove Beacon, in the top menu, click on the Tools (wrench icon) tab.</li>
-      <li>From the left navigation, be sure the <strong>Ingestion</strong> option is selected (it is the default option).</li>
-      <li>Click the <strong>Update Brightcove Videos</strong> button.</li>
-      <li>Once the ingestion is finished, you can check to be sure your videos have been assigned to your AuthVOD package by first clicking in the top menu the <strong>Commerce</strong> tab.</li>
-      <li>From the left navigation, be sure the <strong>Packages</strong> option is selected (it is the default option).</li>
-      <li>Click the name of your AuthVOD package.</li>
-      <li>Click on the <strong>Content</strong> tab to see the assets assigned to this AuthVOD package. An example of this tab is shown here:
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/content.png" alt="content">
-        </figure>
+      <li>Brightcove Beaconのトップメニューで、[ツール]（レンチアイコン）タブをクリックします。</li>
+      <li>左側のナビゲーションから、<strong>摂取</strong>オプションが選択されています (これがデフォルトのオプションです)。</li>
+      <li>クリック<strong>ブライトコーブの動画を更新する</strong>ボタン。</li>
+      <li>取り込みが完了したら、最初にトップ メニューの<strong>商業</strong>タブ。</li>
+      <li>左側のナビゲーションから、<strong>パッケージ</strong>オプションが選択されています (これがデフォルトのオプションです)。</li>
+      <li>AuthVODパッケージの名前をクリックします。</li>
+      <li>クリックしてください<strong>コンテンツ</strong>タブをクリックして、この AuthVOD パッケージに割り当てられたアセットを表示します。このタブの例を次に示します。 <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/content.png" alt="コンテンツ"> </figure>
       </li>
-      <li>To start cache clearing, in the top menu, click on the Tools (wrench icon) tab.</li>
-      <li>From the left navigation, click the <strong>Cache</strong> option.</li>
-      <li>Click the <strong>Cache Purge</strong> button.</li>
+      <li>キャッシュのクリアを開始するには、トップメニューで[ツール]（レンチアイコン）タブをクリックします。</li>
+      <li>左側のナビゲーションから、<strong>キャッシュ</strong>オプション。</li>
+      <li>クリック<strong>キャッシュパージ</strong>ボタン。</li>
     </ol>
-    <p>Now, any viewers who are authenticated to the Brightcove Beacon app will have access to AuthVOD content. If a viewer tries to play a video while NOT authenticated, a message appears in the bottom-left of the video prompting them to sign in, as shown here:
-    <figure class="bcls-figure">
-      <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/sign-in.png" alt="sign in prompt">
-    </figure>
-    </p>
-  </section>
-
-  <section class="bcls-section">
-    <h2 id="Unpublishing">Unpublishing or deleting a package</h2>
-    <p>If a package is no longer needed you have two options:</p>
+    <p>これで、Brightcove Beaconアプリに対して認証されたすべての視聴者は、AuthVODコンテンツにアクセスできるようになります。認証されていない状態で視聴者がビデオを再生しようとすると、ビデオの左下にメッセージが表示され、次のようにサインインするように求められます。 <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/sign-in.png" alt="サインインプロンプト"> </figure>
+    </p>  </section><section class="bcls-section">
+    <h2 id="Unpublishing">パッケージのパブリッシュ解除または削除</h2>
+    <p>パッケージが不要になった場合は、次の2つのオプションがあります。</p>
     <ul>
-      <li><strong>Unpublish</strong>: You can unpublish a package that will be needed again. For instance, you have a special package associated with a holiday that you will use year after year. This is a good use case for unpublish.</li>
-      <li><strong>Delete</strong>: You can delete a package and it is not recoverable. For instance, you have an introductory package for a new set of content, but that content will not be new again, so you will not need the package again. This is a good use case for delete.</li>
+      <li><strong>非公開</strong>:再度必要となるパッケージの公開を解除できます。例えば、毎年使用する休日に関連する特別なパッケージがあります。これは未公開の良いユースケースです。</li>
+      <li><strong>消去</strong>:パッケージは削除できますが、回復できません。例えば、新しいコンテンツセットのための入門パッケージがありますが、そのコンテンツは新しいものではないので、パッケージは再び必要ありません。これは削除に適したユースケースです。</li>
     </ul>
-    <p>There are two places you can unpublish/delete a package:</p>
+    <p>パッケージのパブリッシュを解除または削除するには、次の2つの場所があります。</p>
     <ul>
-      <li>From the <strong>SVOD/AuthVOD Plans</strong> section check the package(s) you wish to unpublish/delete then click the appropriate button.<figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/unpublish-delete.png" alt="unpublish delete">
-        </figure>
+      <li>から<strong>SVOD/AuthVOD プラン</strong>セクションで、非公開/削除するパッケージをチェックし、適切なボタンをクリックします。<figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/unpublish-delete.png" alt="公開解除削除"> </figure>
       </li>
-      <li>If you are editing the package, from the <strong>Package</strong> tab you can both unpublish and delete. Use the <strong>Status</strong> to unpublish or the <strong>Delete</strong> button to delete.
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/unpublish-delete-edit.png" alt="unpublish delete when editing">
-        </figure>
+      <li>パッケージを編集している場合は、<strong>パッケージ</strong>タブで非公開と削除の両方を行うことができます。使用<strong>状態</strong>非公開にするか、<strong>消去</strong>ボタンをクリックして削除します。 <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/s-monetization-img/implementing-authvod/unpublish-delete-edit.png" alt="編集時に削除をパブリッシュ解除する"> </figure>
       </li>
-    </ul>
-  </section>
-
-
-
-
-  {% elsif site.product_short == "Beacon Classic" %}
-
-
-
-
-
-  <section class="bcls-section">
-    <h2 id="section-name">Understanding AuthVOD</h2>
-    <p>AuthVOD (AUTHenticated Video On Demand) is a monetization package where viewers must authenticate, that is enter a username and password, to the Brightcove Beacon app to watch videos included in the package. The videos may or may not show advertisements, depending on how you configure that package.</p>
-    <p>See the <a href="/monetization/monetization-options.html">Understanding Monetization Options</a> document for more information on AuthVOD, as well as all monetization packages you can use with Brightcove Beacon.</p>
-  </section>
-
-  <section class="bcls-section">
-    <h2 id="section-name">Configuring an AuthVOD package overview</h2>
-    <p>Here are the high-level steps in configuring an AuthVOD package:</p>
+    </ul> </section> {% elsif site.product_short=="BeaconClassic"%} <section class="bcls-section">
+    <h2 id="section-name">AuthVODを理解する</h2>
+    <p>AuthVOD（AUTHenticated Video On Demand）は、パッケージに含まれるビデオを視聴するために、視聴者がBrightcove Beaconアプリに対して認証、つまりユーザー名とパスワードを入力する必要がある収益化パッケージです。そのパッケージの構成方法に応じて、ビデオに広告が表示される場合と表示されない場合があります。</p>
+    <p>を参照してください<a href="/monetization/monetization-options.html">収益化オプションについて</a>AuthVOD、および Brightcove Beacon で使用できるすべての収益化パッケージの詳細については、ドキュメントを参照してください。</p>  </section><section class="bcls-section">
+    <h2 id="section-name">AuthVODパッケージの構成の概要</h2>
+    <p>AuthVODパッケージを構成するための高レベルの手順は次のとおりです。</p>
     <ol>
-      <li>In Brightcove Beacon, create an <strong>unpublished</strong>, cost free package.</li>
-      <li>If ads are desired, supply an ad provider when creating the package.</li>
-      <li>In Video Cloud Studio, add data to videos' custom fields to assign them to the AuthVOD package.</li>
-      <li>In Brightcove Beacon, ingest the videos and clear the cache.</li>
-    </ol>
-  </section>
-
-  <section class="bcls-section">
-    <h2 id="section-name">Creating a package in Brightcove Beacon</h2>
-    <p>Here are the detailed steps to follow in Brightcove Beacon to create an AuthVOD package:</p>
+      <li>ブライトコーブ ビーコンで、<strong>未発表</strong>、無料パッケージ。</li>
+      <li>広告が必要な場合は、パッケージの作成時に広告プロバイダーを提供してください。</li>
+      <li>Video Cloud Studioで、ビデオのカスタムフィールドにデータを追加して、AuthVODパッケージに割り当てます。</li>
+      <li>Brightcove Beaconで、ビデオを取り込み、キャッシュをクリアします。</li>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="section-name">Brightcove Beaconでパッケージを作成する</h2>
+    <p>AuthVODパッケージを作成するためにBrightcove Beaconで実行する詳細な手順は次のとおりです。</p>
     <ol class="bcls-tasklist">
-      <li>Click the <strong>Commerce</strong> tab along the top of Brightcove Beacon.
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/using-bcb/implementing-authvod/navigation-to-add.png" alt="get to add new package button">
-        </figure>
+      <li>クリック<strong>商業</strong>ブライトコーブ ビーコンの上部にあるタブ。 <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/implementing-authvod/navigation-to-add.png" alt="新しいパッケージボタンを追加する"> </figure>
       </li>
-      <li>Select <strong>Packages</strong> from the left navigation.</li>
-      <li>Click the <strong>Add New Package</strong> button.</li>
-      <li>On the <strong>Package</strong> tab supply the internal name and be sure to leave the <strong>Status</strong> as <strong>Unpublished</strong>.
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/using-bcb/implementing-authvod/package-tab.png" alt="package tab">
-        </figure>
+      <li>選択する<strong>パッケージ</strong>左のナビゲーションから。</li>
+      <li>クリック<strong>新しいパッケージを追加</strong>ボタン。</li>
+      <li>上で<strong>パッケージ</strong>タブは内部名を提供し、必ず残してください<strong>状態</strong>なので<strong>未発表</strong>. <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/implementing-authvod/package-tab.png" alt="[パッケージ] タブ"> </figure>
       </li>
-      <li>If you wish to use advertising, you can click the <strong>Yes</strong> radio button for <strong>Advertisement</strong> then choose an <strong>Ads Provider</strong> from the dropdown.
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/using-bcb/implementing-authvod/package-tab-ads.png" alt="package tab">
-        </figure>
+      <li>広告を使用したい場合は、<strong>はい</strong>のラジオボタン<strong>広告</strong>次に、<strong>広告プロバイダー</strong>ドロップダウンから。 <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/implementing-authvod/package-tab-ads.png" alt="[パッケージ] タブ"> </figure>
       </li>
-      <li>On the <strong>Textual Data</strong> tab enter the name visible to viewers, and a headline about the package.</li>
-      <li>If desired, supply an image that will display with the package information.</li>
-      <li>On the <strong>Streams</strong> tab, enter values for the maximum number of devices that can stream at the same time, and the maximum number of devices that can have an active connection.</li>
-      <li>If you wish finer control of the package availability, click the <strong>Yes</strong> radio button for <strong>Advanced Streams?</strong>, then complete form with finer availability options.</li>
-    </ol>
-  </section>
-
-  <section class="bcls-section">
-    <h2 id="section-name">Add videos to the package in Studio</h2>
-    <p>To add content to the package, you need to use Video Cloud Studio to assign values to custom fields. The two custom fields that you must assign values to for an AuthVOD package are:</p>
+      <li>上で<strong>テキストデータ</strong>タブには、閲覧者に表示される名前と、パッケージに関する見出しを入力します。</li>
+      <li>必要に応じて、パッケージ情報とともに表示される画像を提供します。</li>
+      <li>上で<strong>ストリーム</strong>タブで、同時にストリーミングできるデバイスの最大数と、アクティブな接続を持つことができるデバイスの最大数の値を入力します。</li>
+      <li>パッケージの可用性をより細かく制御したい場合は、<strong>はい</strong>のラジオボタン<strong>高度なストリーム?</strong>をクリックしてから、詳細な空室状況オプションをフォームに記入してください。</li>
+    </ol>  </section><section class="bcls-section">
+    <h2 id="section-name">Studioのパッケージにビデオを追加する</h2>
+    <p>パッケージにコンテンツを追加するには、Video CloudStudioを使用してカスタムフィールドに値を割り当てる必要があります。AuthVODパッケージに値を割り当てる必要がある2つのカスタムフィールドは次のとおりです。</p>
     <ul>
-      <li>beacon.rights.&lt;counter&gt;.packageName</li>
-      <li>beacon.rights.&lt;counter&gt;.type</li>
+      <li>beacon.rights.&lt; &gt;counter .packageName</li>
+      <li>beacon.rights.&lt; &gt;カウンタ.type</li>
     </ul>
-    <p>The steps below detail the process of assigning values to those custom fields.</p>
-    <aside class="bcls-aside bcls-aside--tip">For more information on using Video Cloud's custom fields with Brightcove Beacon, see the <a href="/syncing-with-video-cloud/vc-custom-fields.html">Creating Video Cloud Custom Fields</a> document.</aside>
-    <p>For each video you wish to be in the package, complete the following steps:</p>
+    <p>以下の手順では、これらのカスタムフィールドに値を割り当てるプロセスについて詳しく説明します。</p> <aside class="bcls-aside bcls-aside--tip">Brightcove Beacon で Video Cloud のカスタム フィールドを使用する方法の詳細については、<a href="/syncing-with-video-cloud/vc-custom-fields.html"> Video Cloud カスタム フィールドの作成</a>資料。</aside>
+    <p>パッケージに入れたいビデオごとに、次の手順を実行します。</p>
     <ol class="bcls-tasklist-restart">
-      <li>Log in to Video Cloud Studio.</li>
-      <li>In the Media Module, click on the video name to view that video's properties.</li>
-      <li>Click the <strong>CUSTOM FIELDS</strong>' <strong>Edit</strong> button.</li>
-      <li>For the <strong>beacon.rights.&lt;counter&gt;.packageName</strong>, enter the name of your AuthVOD package created earlier.</li>
-      <li>For the <strong>beacon.rights.&lt;counter&gt;.type</strong>, enter <strong>SVOD</strong>.</li>
+      <li>ビデオクラウドスタジオにログインします。</li>
+      <li>メディアモジュールで、ビデオ名をクリックして、そのビデオのプロパティを表示します。</li>
+      <li>クリック<strong>カスタムフィールド</strong>'<strong>編集</strong>ボタン。</li>
+      <li>のために<strong>beacon.rights.&lt;カウンター&gt;.packageName</strong>で、以前に作成した AuthVOD パッケージの名前を入力します。</li>
+      <li>のために<strong>beacon.rights.&lt;カウンター&gt;.type</strong> 、 入力<strong>SVOD</strong> .</li>
     </ol>
-    <p>The following screenshot shows an example of actual values used in the custom fields. In this case, the <strong>counter</strong> is zero (highlighted in red) and the package name is <strong>AuthVOD Test</strong> (highlighted in yellow). Remember when implementing AuthVOD, the <strong>beacon.rights.&lt;counter&gt;.type</strong> is always set to <strong>SVOD</strong>.</p>
-    <figure class="bcls-figure">
-      <img class="bcls-image" src="/assets/images/using-bcb/implementing-authvod/values-in-custom-fields.png" alt="custom field values">
-    </figure>
-  </section>
-
-  <section class="bcls-section">
-    <h2 id="section-name">Ingest videos into Brightcove Beacon</h2>
-    <p>Changes that are made to videos in Video Cloud Studio need to be ingested into Brightcove Beacon. This is done automatically every hour, but you can also ingest manually on demand. The broad steps will be detailed below.</p>
-    <aside class="bcls-aside bcls-aside--tip">For complete details on ingesting videos see the <a href="/syncing-with-video-cloud/forcing-a-sync.html">Forcing a Sync</a> document.</aside>
+    <p>次のスクリーンショットは、カスタムフィールドで使用される実際の値の例を示しています。この場合、<strong>カウンター</strong>はゼロ (赤で強調表示) で、パッケージ名は<strong>AuthVOD テスト</strong>（黄色で強調表示されました）。AuthVOD を実装するときは、<strong> beacon.rights.&lt;カウンター&gt;.type</strong>常に設定されています<strong>SVOD</strong> .</p> <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/implementing-authvod/values-in-custom-fields.png" alt="カスタムフィールド値">   </figure></section><section class="bcls-section">
+    <h2 id="section-name">Brightcoveビーコンにビデオを取り込む</h2>
+    <p>Video Cloud Studioでビデオに加えられた変更は、Brightcove Beaconに取り込む必要があります。これは1時間ごとに自動的に行われますが、必要に応じて手動で取り込むこともできます。大まかな手順については、以下で詳しく説明します。</p> <aside class="bcls-aside bcls-aside--tip">ビデオの取り込みの詳細については、<a href="/syncing-with-video-cloud/forcing-a-sync.html">同期の強制</a>資料。</aside>
     <ol class="bcls-tasklist-restart">
-      <li>In Brightcove Beacon, in the top menu, click on the Tools (wrench icon) tab.</li>
-      <li>From the left navigation, be sure the <strong>Ingestion</strong> option is selected (it is the default option).</li>
-      <li>Click the <strong>Update Brightcove Videos</strong> button.</li>
-      <li>Once the ingestion is finished, you can check to be sure your videos have been assigned to your AuthVOD package by first clicking in the top menu the <strong>Commerce</strong> tab.</li>
-      <li>From the left navigation, be sure the <strong>Packages</strong> option is selected (it is the default option).</li>
-      <li>Click the name of your AuthVOD package.</li>
-      <li>Click on the <strong>Content</strong> tab to see the assets assigned to this AuthVOD package. An example of this tab is shown here:
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/using-bcb/implementing-authvod/content.png" alt="content">
-        </figure>
+      <li>Brightcove Beaconのトップメニューで、[ツール]（レンチアイコン）タブをクリックします。</li>
+      <li>左側のナビゲーションから、<strong>摂取</strong>オプションが選択されています (これがデフォルトのオプションです)。</li>
+      <li>クリック<strong>ブライトコーブの動画を更新する</strong>ボタン。</li>
+      <li>取り込みが完了したら、最初にトップ メニューの<strong>商業</strong>タブ。</li>
+      <li>左側のナビゲーションから、<strong>パッケージ</strong>オプションが選択されています (これがデフォルトのオプションです)。</li>
+      <li>AuthVODパッケージの名前をクリックします。</li>
+      <li>クリックしてください<strong>コンテンツ</strong>タブをクリックして、この AuthVOD パッケージに割り当てられたアセットを表示します。このタブの例を次に示します。 <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/implementing-authvod/content.png" alt="コンテンツ"> </figure>
       </li>
-      <li>To start cache clearing, in the top menu, click on the Tools (wrench icon) tab.</li>
-      <li>From the left navigation, click the <strong>Cache</strong> option.</li>
-      <li>Click the <strong>Cache Purge</strong> button.</li>
+      <li>キャッシュのクリアを開始するには、トップメニューで[ツール]（レンチアイコン）タブをクリックします。</li>
+      <li>左側のナビゲーションから、<strong>キャッシュ</strong>オプション。</li>
+      <li>クリック<strong>キャッシュパージ</strong>ボタン。</li>
     </ol>
-    <p>Now, any viewers who are authenticated to the Brightcove Beacon app will have access to AuthVOD content. If a viewer tries to play a video while NOT authenticated, a message appears in the bottom-left of the video prompting them to sign in, as shown here:
-    <figure class="bcls-figure">
-      <img class="bcls-image" src="/assets/images/using-bcb/implementing-authvod/sign-in.png" alt="sign in prompt">
-    </figure>
-    </p>
-  </section>
-
-  <section class="bcls-section">
-    <h2 id="Unpublishing">Unpublishing or deleting a package</h2>
-    <p>If a package is no longer needed you have two options:</p>
+    <p>これで、Brightcove Beaconアプリに対して認証されたすべての視聴者は、AuthVODコンテンツにアクセスできるようになります。認証されていない状態で視聴者がビデオを再生しようとすると、ビデオの左下にメッセージが表示され、次のようにサインインするように求められます。 <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/implementing-authvod/sign-in.png" alt="サインインプロンプト"> </figure>
+    </p>  </section><section class="bcls-section">
+    <h2 id="Unpublishing">パッケージのパブリッシュ解除または削除</h2>
+    <p>パッケージが不要になった場合は、次の2つのオプションがあります。</p>
     <ul>
-      <li><strong>Unpublish</strong>: You can unpublish a package that will be needed again. For instance, you have a special package associated with a holiday that you will use year after year. This is a good use case for unpublish.</li>
-      <li><strong>Delete</strong>: You can delete a package and it is not recoverable. For instance, you have an introductory package for a new set of content, but that content will not be new again, so you will not need the package again. This is a good use case for delete.</li>
+      <li><strong>非公開</strong>:再度必要となるパッケージの公開を解除できます。例えば、毎年使用する休日に関連する特別なパッケージがあります。これは未公開の良いユースケースです。</li>
+      <li><strong>消去</strong>:パッケージは削除できますが、回復できません。例えば、新しいコンテンツセットのための入門パッケージがありますが、そのコンテンツは新しいものではないので、パッケージは再び必要ありません。これは削除に適したユースケースです。</li>
     </ul>
-    <p>There are two places you can unpublish/delete a package:</p>
+    <p>パッケージのパブリッシュを解除または削除するには、次の2つの場所があります。</p>
     <ul>
-      <li>From the <strong>SVOD/AuthVOD Plans</strong> section check the package(s) you wish to unpublish/delete then click the appropriate button.<figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/monetization/general/unpublish-delete.png" alt="unpublish delete">
-        </figure>
+      <li>から<strong>SVOD/AuthVOD プラン</strong>セクションで、非公開/削除するパッケージをチェックし、適切なボタンをクリックします。<figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/monetization/general/unpublish-delete.png" alt="公開解除削除"> </figure>
       </li>
-      <li>If you are editing the package, from the <strong>Package</strong> tab you can both unpublish and delete. Use the <strong>Status</strong> to unpublish or the <strong>Delete</strong> button to delete.
-        <figure class="bcls-figure">
-          <img class="bcls-image" src="/assets/images/monetization/general/unpublish-delete-edit.png" alt="unpublish delete when editing">
-        </figure>
+      <li>パッケージを編集している場合は、<strong>パッケージ</strong>タブで非公開と削除の両方を行うことができます。使用<strong>状態</strong>非公開にするか、<strong>消去</strong>ボタンをクリックして削除します。 <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/monetization/general/unpublish-delete-edit.png" alt="編集時に削除をパブリッシュ解除する"> </figure>
       </li>
-    </ul>
-  </section>
-  {% endif %}
-
-  <section class="bcls-section">
-    <h2 id="section-name">Active Subscriptions info in Beacon Studio</h2>
-    <p>Note that in the <strong>Registered Users</strong> module in Beacon Studio when an AuthVOD package is implemented it is not directly shown. The <strong>Active Subscriptions</strong> information is reported as <strong>N/A</strong>. Here is an example:</p>
-    <figure class="bcls-figure">
-      <img class="bcls-image" src="/assets/images/registered-users/na-for-authvod.png" alt="N/A for AuthVOD">
-    </figure>
-  </section>
-
-
-</article>
+    </ul> </section> {% endif %} <section class="bcls-section">
+    <h2 id="section-name">BeaconStudioのアクティブサブスクリプション情報</h2>
+    <p>に注意してください<strong>登録ユーザー</strong>AuthVOD パッケージが実装されている場合、Beacon Studio のモジュールは直接表示されません。の<strong>アクティブなサブスクリプション</strong>情報は次のように報告されます<strong>なし</strong>.以下に例を示します。</p> <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/registered-users/na-for-authvod.png" alt="AuthVODのN/A">   </figure></section></article>

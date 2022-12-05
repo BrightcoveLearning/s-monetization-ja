@@ -1,190 +1,168 @@
-<h1>{{ page.title }}</h1>
-<article class="bcls-article">
-  <summary>{{ page.description }}</summary>
-
-  <section class="bcls-section">
-    <h2 id="Overview">Overview</h2>
-    <p>It is necessary for the provider of the video content and/or merchandise to setup an endpoint so Brightcove Beacon can notify the provider that a purchase is completed. When an in-app purchase is made through a Brightcove Beacon app, the app communicates with one of the platform stores, like the Apple App Store, to complete the purchase. Defined endpoints will receive a notification of this transaction.</p>
+<h1>{{page.title}}</h1> <article class="bcls-article"> <summary>{{page.description}}</summary> <section class="bcls-section">
+    <h2 id="Overview">概要</h2>
+    <p>Brightcove Beaconが購入が完了したことをプロバイダーに通知できるように、ビデオコンテンツや商品のプロバイダーがエンドポイントを設定する必要があります。Brightcove Beaconアプリを通じてアプリ内購入が行われると、アプリはAppleAppStoreのようなプラットフォームストアの一つと通信し、購入を完了する。定義されたエンドポイントは、このトランザクションの通知を受信します。</p>
     <!-- <p>By default the supplier of the video content (and possibly other merchandise) purchased is not notified.</p> -->
-    <p>Let's look at an example that demonstrates the flow from purchase to notification. The fictional company, Acme Symphony, has implemented an endpoint. A viewer using a Brightcove Beacon app on iOS makes a purchase. Here is the high-level workflow:</p>
+    <p>購入から通知までの流れを示す例を見てみましょう。架空の会社、AcmeSymphonyはエンドポイントを実装しました。iOSでBrightcove Beaconアプリを使っている視聴者が購入する。次に、ハイレベルワークフローを示します。</p>
     <ul>
-      <li>A viewer purchases a subscription for access to videos of past symphonies, and tickets for the upcoming summer season of live concerts.</li>
-      <li>The Beacon app completes the purchase through the Apple App Store.</li>
-      <li>The Beacon app notifies Beacon of the purchase.</li>
-      <li>The Beacon entitlement subsystem grants the viewer access to all video assets in the purchased subscription.</li>
-      <li>A notification is sent to Acme Symphony's endpoint.</li>
-      <li>Acme Symphony knows of the purchase and is able to trigger additional workflows like sending tickets to the purchaser.</li>
+      <li>視聴者は、過去の交響曲のビデオへのアクセスのための定期購読と、これからの夏のライブコンサートのチケットを購入する。</li>
+      <li>ビーコンアプリはアップルアプリストアを通じて購入を完了する。</li>
+      <li>BeaconアプリケーションはBeaconに購入を通知します。</li>
+      <li>Beaconentitlementサブシステムは、購入したサブスクリプション内のすべてのビデオアセットへのビューアアクセスを許可します。</li>
+      <li>通知がAcmeSymphonyのエンドポイントに送信されます。</li>
+      <li>AcmeSymphonyは購入を知っており、購入者にチケットを送るなどの追加のワークフローをトリガーすることができます。</li>
     </ul>
-    <p>The rest of the document clarifies the technical implementation and provides specifics for implementing your endpoint.</p>
-  </section>
-
-  <section class="bcls-section">
-    <h2 id="How_notifications_are_implemented">How notifications are implemented</h2>
-    <p>Here is a high-level diagram of the process:</p>
-    <figure class="bcls-figure">
-      <img class="bcls-image" src="/assets/images/s-monetization-img/receive-iap-notifications/beacon-in-app-purchase v4.png" alt="overview beacon in app purchase">
-    </figure>
-    <p>Clarification details for the diagram:</p>
+    <p>この文書の残りの部分では、技術的な実装について説明し、エンドポイントの実装に関する詳細を説明します。</p>  </section><section class="bcls-section">
+    <h2 id="How_notifications_are_implemented">通知の実装方法</h2>
+    <p>プロセスの概要図を次に示します。</p> <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/s-monetization-img/receive-iap-notifications/beacon-in-app-purchase v4.png" alt="アプリ購入時の概要ビーコン"> </figure>
+    <p>図の明確化の詳細:</p>
     <ul>
-      <li>Amazon Simple Notification Service (Amazon SNS) is a managed service that provides message delivery from publishers to subscribers. For full details see Amazon's <a href="https://docs.aws.amazon.com/sns/latest/dg/welcome.html">SNS Developer Guide</a>.</li>
-      <li>After the notification is received by you, the Brightcove Beacon customer, the actions will vary. In the example, since tickets were purchased, the tickets would need to be sent. So once the notification is received, your business rules will determine what must occur.</li>
-      <li>The endpoint implementation approach is entirely your decision. The decision will most likely be guided by backend technologies used and skills of your software engineers.</li>
-      <li>The dashed line from the platform stores directly to the Brightcove Beacon backend is for other notifications, like renewals.</li>
-    </ul>
-  </section>
-
-  <section class="bcls-section">
-    <h2 id="Notification_usage_guidelines">Notification usage guidelines</h2>
-    <p>The following specify usage guidelines for notifications:</p>
+      <li>アマゾン簡易通知サービス(AmazonSNS)は、出版社から購読者にメッセージを伝達する管理型サービスだ。詳細については、Amazon の<a href="https://docs.aws.amazon.com/sns/latest/dg/welcome.html">SNS 開発者ガイド</a>.</li>
+      <li>Brightcove Beaconのお客様から通知を受信すると、処置は異なります。この例では、チケットが購入されたため、チケットを送信する必要があります。そのため、通知が受信されると、ビジネスルールによって何が発生するかが決まります。</li>
+      <li>エンドポイント実装のアプローチは、完全にお客様の判断です。この決定は、使用されているバックエンドテクノロジーとソフトウェアエンジニアのスキルによって行われる可能性が高いです。</li>
+      <li>プラットフォームストアからBrightcove Beaconバックエンドへの点線は、更新などの他の通知用です。</li>
+    </ul>  </section><section class="bcls-section">
+    <h2 id="Notification_usage_guidelines">通知の使用上のガイドライン</h2>
+    <p>次に、通知の使用上のガイドラインを示します。</p>
     <ul>
-      <li>Notifications of in-app purchases from following stores is supported:
+      <li>以下のストアからのアプリ内購入のお知らせがサポートされます。
         <ul>
-          <li>Apple App Store (iOS and AppleTV)</li>
-          <li>Google Play (Android and Android TV)</li>
-          <li>Roku Channel Store</li>
-          <li>Amazon Appstore (FireTV)</li>
-          <li>Stripe (Web and Samsung TV)</li>
+          <li>AppleAppStore(iOSおよびApple)TV)</li>
+          <li>GooglePlay(AndroidおよびAndroidTV)</li>
+          <li>六チャンネルストア</li>
+          <li>AmazonAppstore(FireTV)</li>
+          <li>ストライプ(WebおよびSamsungTV)</li>
         </ul>
       </li>
-      <li>Beacon will report all purchase related events, including the following actions on subscriptions:
+      <li>Beaconは、サブスクリプションに関する次のアクションを含む、購入関連のすべてのイベントを報告します。
         <ul>
-          <li>New</li>
-          <li>Renewal</li>
-          <li>Cancellation</li>
-          <li>Applicable to Google Play only:
+          <li>新規</li>
+          <li>更新</li>
+          <li>キャンセル</li>
+          <li>GooglePlayにのみ適用されます。
             <ul>
-              <li>Pause</li>
-              <li>Hold</li>
-              <li>Resume</li>
+              <li>一時停止</li>
+              <li>保留</li>
+              <li>レジュメ</li>
             </ul>
           </li>
         </ul>
       </li>
-      <li>Enough information is provided in the notification so the external store is able to apply entitlements and/or prevent purchases of the same asset (subscription) if already purchased through Beacon or native stores.</li>
-      <li>Purchase events are delivered to external stores after receiving notification from source stores. This typically happens in under 5 minutes (usually within seconds). </li>
-    </ul>
-  </section>
-
-  <section class="bcls-section">
-    <h2 id="API_endpoint_specifications">API endpoint specifications</h2>
-    <p>After successfully processing a subscription in the Beacon system, Beacon will deliver an SNS topic message to a configured API endpoint specific for a particular customer.</p>
-    <p>Following are the requirements for the external end point:</p>
+      <li>通知には十分な情報が記載されているため、外部ストアは、Beaconまたはネイティブストアを通じて既に購入している場合に、権利を適用したり、同じ資産（サブスクリプション）の購入を防止したりできます。</li>
+      <li>購入イベントは、ソースストアから通知を受けた後、外部ストアに配信されます。これは通常、5分未満（通常は秒以内）で発生します。 </li>
+    </ul>  </section><section class="bcls-section">
+    <h2 id="API_endpoint_specifications">APIエンドポイントの仕様</h2>
+    <p>Beaconシステムでサブスクリプションを正常に処理した後、Beaconは特定の顧客に固有の設定済みAPIエンドポイントにSNSトピックメッセージを配信します。</p>
+    <p>外部エンドポイントの要件は次のとおりです。</p>
     <ul>
-      <li>The API endpoint must be compatible with AWS SNS integration. See Amazon's <a href="https://docs.aws.amazon.com/sns/latest/dg/sns-http-https-endpoint-as-subscriber.html">Fanout to HTTP/S endpoints</a> document for more details. This document contains a link to an implementation of an endpoint that processes Amazon SNS HTTP POST requests, written as a Java servlet.</li>
-      <li>The API endpoint must be open to range of IP addresses used by AWS - see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html">AWS IP address ranges</a>.</li>
-      <li>The API endpoint will go through a subscription confirmation step. See Amazon's <a href="https://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.confirm.html">Confirm the subscription</a> document for more details.</li>
-      <li>The API endpoint will need to unescape the JSON in the message field of the notification. See Amazon's <a href="https://docs.aws.amazon.com/sns/latest/dg/sns-message-and-json-formats.html">Parsing message formats</a> document for more details.</li>
-      <li>The API endpoint must verify the signature and provenance of the message. See Amazon's <a href="https://docs.aws.amazon.com/sns/latest/dg/sns-verify-signature-of-message.html">Verifying the signatures of Amazon SNS messages</a> document for more details.</li>
+      <li>APIエンドポイントは、AWSSNS統合と互換性がある必要があります。アマゾンを見る<a href="https://docs.aws.amazon.com/sns/latest/dg/sns-http-https-endpoint-as-subscriber.html">HTTP/S エンドポイントへのファンアウト</a>詳細については、ドキュメントを参照してください。このドキュメントには、JavaServletとして作成されたAmazonSNSHTTPPOST要求を処理するエンドポイントの実装へのリンクが含まれています。</li>
+      <li>API エンドポイントは、AWS によって使用される IP アドレスの範囲に対して開かれている必要があります - を参照してください<a href="https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html">AWS IP アドレス範囲</a>.</li>
+      <li>APIエンドポイントは、サブスクリプションの確認手順を実行します。アマゾンを見る<a href="https://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.confirm.html">サブスクリプションを確認する</a>詳細については、ドキュメントを参照してください。</li>
+      <li>APIエンドポイントは、通知のメッセージフィールドでJSONからのエスケープを解除する必要があります。アマゾンを見る<a href="https://docs.aws.amazon.com/sns/latest/dg/sns-message-and-json-formats.html">メッセージ形式の解析</a>詳細については、ドキュメントを参照してください。</li>
+      <li>APIエンドポイントは、メッセージのシグニチャと送信元を確認する必要があります。アマゾンを見る<a href="https://docs.aws.amazon.com/sns/latest/dg/sns-verify-signature-of-message.html">Amazon SNS メッセージの署名の検証</a>詳細については、ドキュメントを参照してください。</li>
     </ul>
-    <p>To be able to recover from errors, it is possible to re-send all purchases for a user (filtering any non active notifications). The store's external API endpoint is responsible for re-processing all messages, even if those were previously consumed.</p>
-    <aside class="bcls-aside bcls-aside--warning language-editable">Notes:
+    <p>エラーから回復するために、ユーザに対してすべての購入を再送信できます（非アクティブな通知をフィルタリング）。ストアの外部APIエンドポイントは、すべてのメッセージが以前に消費された場合でも、すべてのメッセージを再処理する責任があります。</p> <aside class="bcls-aside bcls-aside--warning language-editable">注意:
       <ul>
-        <li>It is possible to generate an infinite loop of notifications. For instance, Beacon sends the IAP notification to the end point, the receiver creates a user and sends a <em>create entitlement</em> message to Beacon, which in turn sends an IAP notification to the receiver, and an infinite loop is started. When implementing your endpoint you must be sure not to allow this to happen.</li>
-        <li>SNS queues do not have a retention period. We have a 3x 20s retry policy and then the message is moved to a dead letter queue. The dead-letter queue has a retention period of 14 days. However, the customer can force the sync either via beacon admin UI or via the API.
-          <p>Brightcove can provide a file you can use to force the sync for all users, or you can use the API directly.</p>
-      </ul>
-    </aside>
-  </section>
-
-  <section class="bcls-section">
-    <h2 id="JSON_payload_specifications">JSON payload specifications</h2>
-    <p>The JSON payload that is sent to the external store end point can include following fields:</p>
+        <li>通知の無限ループを生成できます。たとえば、ビーコンは IAP 通知をエンドポイントに送信し、受信者はユーザーを作成して<em>資格を作成する</em>メッセージをビーコンに送信し、ビーコンが受信者に IAP 通知を送信し、無限ループが開始されます。エンドポイントを実装するときは、このようなことが発生しないようにする必要があります。</li>
+        <li>SNSキューには保持期間がありません。3x20sリトライポリシーがあり、メッセージはデッドレターキューに移動されます。デッドレターキューの保持期間は14日間です。ただし、お客様はビーコン管理UIまたはAPIを使用して強制的に同期することができます。
+          <p>Brightcoveは、すべてのユーザーに強制的に同期させるために使用できるファイルを提供したり、APIを直接使用することができます。</p>
+      </ul>   </aside></section><section class="bcls-section">
+    <h2 id="JSON_payload_specifications">JSONペイロードの仕様</h2>
+    <p>外部ストアエンドポイントに送信されるJSONペイロードには、次のフィールドを含めることができます。</p>
     <table class="bcls-table">
       <thead class="bcls-table__head">
         <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Required</th>
-          <th>Possible Values</th>
-          <th>Notes</th>
+          <th>名前</th>
+          <th>タイプ</th>
+          <th>必須</th>
+          <th>使用可能な値</th>
+          <th>注</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
           <td>notification_type</td>
-          <td>String</td>
-          <td>Always</td>
-          <td><strong>new</strong>, <strong>renew</strong>, <strong>cancel</strong>, <strong>pause</strong>, <strong>hold</strong>, <strong>resume</strong></td>
+          <td>文字列</td>
+          <td>常に</td>
+          <td><strong>新着</strong>、<strong>更新する</strong>、<strong>キャンセル</strong>、<strong>一時停止</strong>、<strong>所有</strong>、<strong>履歴書</strong></td>
           <td>
-            <li><strong>new</strong> - Issued for a new subscription</li>
-            <li><strong>renew</strong> - Used to renew an existing subscription (extend the subscription)</li>
-            <li><strong>cancel</strong> - Cancel an existing purchase</li>
-            <li><strong>hold</strong> - Subscription was put on hold due to non payment</li>
-            <li><strong>pause</strong> - Subscription is paused by user</li>
-            <li><strong>resume</strong> - Subscription transition from hold or pause to continue</li>
+            <li><strong>新着</strong>- 新しいサブスクリプションのために発行された</li>
+            <li><strong>更新する</strong>- 既存のサブスクリプションを更新するために使用 (サブスクリプションを延長)</li>
+            <li><strong>キャンセル</strong>- 既存の購入をキャンセルする</li>
+            <li><strong>所有</strong>- 未払いのためサブスクリプションが保留されました</li>
+            <li><strong>一時停止</strong>- サブスクリプションがユーザーによって一時停止されました</li>
+            <li><strong>履歴書</strong>- サブスクリプションの保留または一時停止から継続への移行</li>
           </td>
         </tr>
         <tr>
           <td>external_user_id</td>
-          <td>String</td>
-          <td>Always</td>
+          <td>文字列</td>
+          <td>常に</td>
           <td></td>
-          <td>This is the id that is commonly used by Beacon and the external store to identify the user</td>
+          <td>これは、ビーコンと外部ストアがユーザを識別するために一般的に使用するIDです。</td>
         </tr>
         <tr>
           <td>transaction_id</td>
-          <td>String</td>
-          <td>Always</td>
+          <td>文字列</td>
+          <td>常に</td>
           <td></td>
-          <td>Unique identifier for the transaction. When a cancellation is done, this ID should be used to cancel the subscription or individual purchase. When a subscription is renewed, resumed, paused or put on hold, this ID is used to find the specific subscription that is affected.</td>
+          <td>トランザクションの一意の識別子。解約が完了したら、このIDを利用して加入または個別購入を解約しなければならない。サブスクリプションが更新、再開、一時停止、または保留になると、このIDを使用して影響を受ける特定のサブスクリプションを検索します。</td>
         </tr>
         <tr>
-          <td>start_date</td>
-          <td>integer</td>
-          <td>Yes with the exception of cancellation notifications</td>
+          <td>開始日</td>
+          <td>整数</td>
+          <td>キャンセル通知を除き、はい</td>
           <td></td>
-          <td>The date when the purchase is in effect and entitlements to user should start</td>
+          <td>購入が有効になり、ユーザーの資格が開始されるべき日付</td>
         </tr>
         <tr>
-          <td>end_date</td>
-          <td>integer</td>
-          <td>Required for these notification types: new, renew, cancel and resume</td>
+          <td>終了日</td>
+          <td>整数</td>
+          <td>通知タイプに必要:新規、更新、キャンセル、および再開</td>
           <td></td>
-          <td>The date when the purchase is no longer in effect and entitlements to the user should end. For cancellation requests, the <code>end_date</code> defines when the user loses access to the content.</td>
+          <td>購入が無効になり、ユーザーに対する資格が終了する日付です。キャンセル依頼につきましては、<code>終了日</code>ユーザーがいつコンテンツにアクセスできなくなるかを定義します。</td>
         </tr>
         <tr>
-          <td>original_store</td>
-          <td>String</td>
-          <td>Always</td>
-          <td><strong>Apple Store</strong>, <strong>Google Play</strong>, <strong>Amazon Store</strong>, <strong>Stripe</strong>, <strong>Roku Store</strong>, <strong>Evergent</strong>, <strong>Beacon Store</strong></td>
-          <td>The original store where the purchase was done</td>
+          <td>オリジナルストア</td>
+          <td>文字列</td>
+          <td>常に</td>
+          <td><strong>アップルストア</strong>、<strong>グーグルプレイ</strong>、<strong>アマゾンストア</strong>、<strong>縞</strong>、<strong>ロクストア</strong>、<strong>エバージェント</strong>、<strong>ビーコンストア</strong></td>
+          <td>購入した元の店舗</td>
         </tr>
         <tr>
-          <td>sku</td>
-          <td>String</td>
-          <td>Always</td>
+          <td>スクー</td>
+          <td>文字列</td>
+          <td>常に</td>
           <td></td>
-          <td>Identifies the item that was purchased. This is the identifier used in the source store.</td>
+          <td>購入したアイテムを識別します。これは、ソースストアで使用されるIDです。</td>
         </tr>
         <tr>
           <td>package_name</td>
-          <td>String</td>
-          <td>Always</td>
+          <td>文字列</td>
+          <td>常に</td>
           <td></td>
-          <td>The name of the SVOD or TVOD package in Brightcove Beacon</td>
+          <td>Brightcove BeaconのSVODまたはTVODパッケージの名前</td>
         </tr>
         <tr>
           <td>notification_date</td>
-          <td>integer</td>
-          <td>Always</td>
+          <td>整数</td>
+          <td>常に</td>
           <td></td>
-          <td>Timestamp of dispatching the event from Beacon to the external store system</td>
+          <td>ビーコンから外部ストアシステムにイベントをディスパッチするタイムスタンプ</td>
         </tr>
         <tr>
-          <td>cancellation_date</td>
-          <td>integer</td>
-          <td>Required when notification type is cancel</td>
+          <td>cancancelation_date</td>
+          <td>整数</td>
+          <td>通知タイプがキャンセルの場合に必要です。</td>
           <td></td>
-          <td>Used for a cancel request and specifies the Timestamp of when the user/store cancelled the subscription</td>
+          <td>キャンセル要求に使用され、ユーザ/ストアがサブスクリプションをキャンセルしたときのタイムスタンプを指定します。</td>
         </tr>
         <tr>
           <td>trial_end_date</td>
-          <td>integer</td>
-          <td>Optional (applicable only to new subscriptions)</td>
+          <td>整数</td>
+          <td>オプション（新規登録にのみ適用）</td>
           <td></td>
-          <td>If present, means that there is a trial. For new subscriptions it is possible that a trial end date is same as <code>end_date</code> (use case where stores sends one notification for trial and a second one for when the real subscription starts).</td>
+          <td>存在するということは、裁判があるということです。新しいサブスクリプションの場合、トライアルの終了日が同じである可能性があります<code>終了日</code>(ストアがトライアル用の通知を 1 つ送信し、実際のサブスクリプションの開始時に 2 つ目の通知を送信するユース ケース)。</td>
         </tr>
       </tbody>
-    </table>
-  </section>
-</article>
+    </table>  </section></article>

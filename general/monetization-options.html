@@ -1,41 +1,33 @@
-<h1>{{ page.title }}</h1>
-<article class="bcls-article">
-  <summary>{{ page.description }}</summary>
-
-  <section class="bcls-section">
-    <h2 id="Overview">Overview</h2>
+<h1>{{page.title}}</h1> <article class="bcls-article"> <summary>{{page.description}}</summary> <section class="bcls-section">
+    <h2 id="Overview">概要</h2>
     <p>
-      A monetization package defines how you can generate revenue from your app, if you choose to do so.
-    </p>
-  </section>
-  <section class="bcls-section">
+      収益化パッケージは、アプリから収益を生成する方法を定義します（そうすることを選択した場合）。
+    </p>  </section><section class="bcls-section">
     <h2 id="Terms">
-      Terms
+      利用規約
     </h2>
-    <p>Here is a list of term and acronym definitions:</p>
+    <p>用語と頭字語の定義のリストは次のとおりです。</p>
     <table class="bcls-table">
       <thead class="bcls-table__head">
         <tr>
-          <th>Term</th>
-          <th>Definition</th>
+          <th>用語</th>
+          <th>定義</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
-          <td>AVOD</td>
-          <td>Advertising-based video on demand
+          <td> AVOD</td>
+          <td>オンデマンドで広告ベースのビデオ
           </td>
         </tr>
         <tr>
           <td>AuthVOD</td>
-          <td>Authenticated video on demand<br>
-            <em>*Note that AuthVOD can be implemented with and without ads</em>
+          <td>オンデマンドで認証されたビデオ<br> <em>*AuthVODは広告の有無にかかわらず実装可能です。</em>
           </td>
         </tr>
         <tr>
-          <td>SVOD</td>
-          <td>Subscription video on demand<br>
-            <em>*Note that SVOD can be implemented with and without ads</em>
+          <td> SVOD</td>
+          <td>サブスクリプション動画オンデマンド<br> <em>*SVODは広告の有無にかかわらず実装可能であることに注意してください。</em>
           </td>
         </tr>
         <!-- <tr>
@@ -44,88 +36,84 @@
           </tr> -->
         <tr>
           <td>VOD</td>
-          <td>Video on demand generally refers to video on demand services through cable networks.</td>
+          <td>ビデオオンデマンドとは、一般に、ケーブルネットワークを介したビデオオンデマンドサービスを指します。</td>
         </tr>
       </tbody>
-    </table>
-
-  </section>
-
-  <section class="bcls-section">
+    </table>  </section><section class="bcls-section">
     <h2 id="Monetization_packages">
-      Monetization packages
+      収益化パッケージ
     </h2>
-    <p>Here are the packages offered with Brightcove Beacon. Choose the one that best fits your needs.</p>
+    <p>Brightcove Beacon で提供されるパッケージは次のとおりです。お客様のニーズに最適なものをお選びください。</p>
     <table class="bcls-table">
       <thead class="bcls-table__head">
         <tr>
-          <th style="width: 15%;">Plan</th>
-          <th>Description</th>
+          <th style="width: 15%;">プラン</th>
+          <th>説明</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
-          <td>Free</td>
+          <td>無料</td>
           <td>
             <ul>
-              <li>Visitors can view ad-free content in this plan without authentication.</li>
+              <li>このプランでは、訪問者は認証なしで広告なしのコンテンツを表示できます。</li>
             </ul>
           </td>
         </tr>
         <tr>
-          <td>AVOD</td>
+          <td> AVOD</td>
           <td>
             <ul>
-              <li>Visitors can view content containing ads in this plan without authentication.</li>
-              <li>Generally free to consumers since advertisements are shown.</li>
+              <li>訪問者は、認証なしでこのプランの広告を含むコンテンツを表示できます。</li>
+              <li>広告が表示されるため、一般的に消費者に無料です。</li>
             </ul>
           </td>
         </tr>
         <tr>
-          <td>AuthVOD without ads</td>
+          <td>広告無しでAuthVOD</td>
           <td>
             <ul>
-              <li>Authenticated users can view ad-free content in this plan by signing in.</li>
-              <li> This model often requires users to log in using credentials from another platform, service, cable (TVE), or cellular subscription in order to access content.</li>
-              <li>Valuable when coordinating with partnerships or managing multiple properties or branded services.</li>
+              <li>認証されたユーザーは、サインインすることで、このプランの広告なしのコンテンツを表示できます。</li>
+              <li> このモデルでは、コンテンツにアクセスするために、ユーザーは多くの場合、別のプラットフォーム、サービス、ケーブル (TVE)、またはセルラーサブスクリプションの資格情報を使用してログインする必要があります。</li>
+              <li>パートナーシップとの調整、複数のプロパティまたはブランドサービスの管理に役立ちます。</li>
             </ul>
           </td>
         </tr>
         <tr>
-          <td>AuthVOD with ads</td>
+          <td>広告付きAuthVOD</td>
           <td>
             <ul>
-              <li>Authenticated users view content containing ads in this plan by signing in.</li>
-              <li>Since viewers have authenticated, they can, for example, make “watchlists” of content and “pause and resume” across devices.</li>
-              <li>The service provider can learn more about the end viewer for marketing and advertising purposes.</li>
-              <li>Can be thought of as an AuthVOD/AVOD combination.</li>
+              <li>認証されたユーザーは、サインインすることにより、このプランの広告を含むコンテンツを表示します。</li>
+              <li>ビューアは認証済みなので、たとえば、デバイス間でコンテンツのウォッチリストや一時停止と再開を作成できます。</li>
+              <li>サービスプロバイダーは、マーケティングおよび広告目的でエンドビューアについて詳しく知ることができます。</li>
+              <li>AuthVOD/AVODの組み合わせと考えることができます。</li>
             </ul>
           </td>
         </tr>
         <tr>
-          <td>SVOD without ads</td>
+          <td>広告なしのSVOD</td>
           <td>
             <ul>
-              <li>Subscribers can view ad-free content in this plan.</li>
-              <li>It allows users to consume as much content as they desire at a flat rate per month without ads.</li>
+              <li>このプランでは、購読者は広告なしのコンテンツを表示できます。</li>
+              <li>ユーザーが広告なしに月定額でコンテンツを思う存分消費できるようにする。</li>
             </ul>
           </td>
         </tr>
         <tr>
-          <td>SVOD with ads</td>
+          <td>広告付きSVOD</td>
           <td>
             <ul>
-              <li>Subscribers can view content with advertisements in this plan.</li>
-              <li>Subscribers may pay a lower monthly rate, but with the lower rate ads must be viewed.</li>
-              <li>Can be thought of as an SVOD/AVOD combination.</li>
+              <li>ユーザは、このプランで広告付きのコンテンツを表示できます。</li>
+              <li>加入者は月々の料金を安く支払うことができるが、料金が安い広告は必ず見なければならない。</li>
+              <li>SVOD/AVODの組み合わせと考えることが、</li>
             </ul>
           </td>
         </tr>
         <tr>
-          <td>Mixed</td>
+          <td>混合</td>
           <td>
             <ul>
-              <li>Subscribers can view content with a mixture of AVOD and SVOD options.</li>
+              <li>購読者は、AVOD と SVOD オプションを組み合わせてコンテンツを表示できます。</li>
             </ul>
           </td>
         </tr>
@@ -143,7 +131,4 @@
           </tr>-->
 
       </tbody>
-    </table>
-  </section>
-
-</article>
+    </table>  </section></article>
